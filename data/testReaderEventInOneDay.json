@@ -1,0 +1,10 @@
+{"schedule": [{
+  "day": 1,
+  "events": [{
+    "from time": "12:00",
+    "to time": "14:00",
+    "Note": "bring umbrella",
+    "name": "Stanley Park",
+    "day": 1
+  }]
+}]}

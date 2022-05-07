@@ -1,0 +1,35 @@
+{"schedule": [
+    {
+        "day": 1,
+        "events": [
+            {
+                "from time": "06:00",
+                "to time": "07:00",
+                "Note": "bring water",
+                "name": "Stanley Park",
+                "day": 1
+            },
+            {
+                "from time": "10:00",
+                "to time": "12:00",
+                "Note": "bring sandals",
+                "name": "Spanish Banks",
+                "day": 1
+            }
+        ]
+    },
+    {
+        "day": 2,
+        "events": []
+    },
+    {
+        "day": 3,
+        "events": [{
+            "from time": "09:00",
+            "to time": "14:00",
+            "Note": "bring food",
+            "name": "Quarry Rock Hike",
+            "day": 3
+        }]
+    }
+]}

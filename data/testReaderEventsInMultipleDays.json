@@ -1,0 +1,35 @@
+{"schedule": [
+  {
+    "day": 1,
+    "events": [
+      {
+        "from time": "07:00",
+        "to time": "10:00",
+        "Note": "bring camera",
+        "name": "Lynn Canyon",
+        "day": 1
+      },
+      {
+        "from time": "10:00",
+        "to time": "12:00",
+        "Note": "bring sandals",
+        "name": "Spanish Banks",
+        "day": 1
+      }
+    ]
+  },
+  {
+    "day": 2,
+    "events": []
+  },
+  {
+    "day": 3,
+    "events": [{
+      "from time": "09:00",
+      "to time": "11:00",
+      "Note": "bring water",
+      "name": "Quarry Rock Hike",
+      "day": 3
+    }]
+  }
+]}
