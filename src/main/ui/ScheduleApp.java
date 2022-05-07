@@ -6,6 +6,7 @@ import model.EventLog;
 import model.Schedule;
 import persistence.JsonReader;
 import persistence.JsonWriter;
+import ui.tools.ViewParksTool;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,24 +15,18 @@ import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 // Schedule application
 public class ScheduleApp extends JFrame {
 
-    JPanel panel;
-
-    public static final int WIDTH = 1500;
-    public static final int HEIGHT = 900;
+    public static final int WIDTH = 1900;
+    public static final int HEIGHT = 1000;
 
     private Schedule schedule;
     //private AttractionTypes types;
-    private Scanner input;
     String toTime;
     String fromTime;
-    String command;
     int dayNum;
-    int intCommand;
     ArrayList<Day> dayList;
 
     private static final String JSON_STORE = "./data/schedule.json";
@@ -50,30 +45,14 @@ public class ScheduleApp extends JFrame {
     // EFFECTS: processes user input
     // used code from: https://github.students.cs.ubc.ca/CPSC210/TellerApp.git as reference
     public void runSchedule() {
-        command = null;
-
         initializeFields();
         initializeGraphics();
-
-        while (true) {
-            // displayMenu();
-            command = input.next();
-            command = command.toLowerCase();
-
-            if (command.equals("e")) {
-                break;
-            }
-            //processCommand();
-        }
-        System.out.println("\n Goodbye");
-
     }
 
     // MODIFIES: this
     // EFFECTS: initializes schedule
     // used code from: https://github.students.cs.ubc.ca/CPSC210/TellerApp.git as reference
     public void initializeFields() {
-        panel = new JPanel();
 
         schedule = new Schedule();
 
@@ -83,17 +62,9 @@ public class ScheduleApp extends JFrame {
         schedule.createNewDay();
         schedule.createNewDay();
 
-
-        //schedule.addDayToSchedule(day);
-        //types = new AttractionTypes();
-        input = new Scanner(System.in);
-        input.useDelimiter("\n");
-
         toTime = "";
         fromTime = "";
-        command = null;
         dayNum = 1;
-        intCommand = 1;
         dayList = new ArrayList<>();
     }
 
@@ -103,11 +74,19 @@ public class ScheduleApp extends JFrame {
     public void initializeGraphics() {
         setLayout(new BorderLayout());
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
-        setLayout(new GridLayout(1, 1, 0, 0));
+        getContentPane().setBackground(Color.LIGHT_GRAY);
+        getContentPane().setLayout(null);
+
+
+        setVisible(true);
+
         createMenu();
         createScheduleArea();
 
+        add(new JButton("test"));
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -116,17 +95,77 @@ public class ScheduleApp extends JFrame {
                 }
             }
         });
-        setLocationRelativeTo(null);
-        setVisible(true);
+
+    }
+
+    // MODIFIES: this
+    // EFFECTS: creates and adds buttons for each day
+    public void createScheduleArea() {
+
+        JPanel schedulePanel = new JPanel();
+
+        schedulePanel.setBounds(850,40,990,870);
+
+
+        schedulePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+
+
+        add(schedulePanel);
+
+
+
+
+
+
+//        panel = new JPanel();
+//        panel.setLayout(new GridLayout(0, 1));
+//        panel.setSize(new Dimension(0, 0));
+//        add(BorderLayout.EAST, panel);
+
+
+//        new ScheduleTool(this, panel, 1);
+//        new ScheduleTool(this, panel, 2);
+//        new ScheduleTool(this, panel, 3);
+//        new ScheduleTool(this, panel, 4);
+//        new ScheduleTool(this, panel, 5);
+
+
     }
 
     // MODIFIES: this
     // EFFECTS: creates and adds buttons
     public void createMenu() {
+
         JPanel menuArea = new JPanel();
-        menuArea.setLayout(new GridLayout(7, 0, 0, 0));
-        menuArea.setSize(new Dimension(0, 0));
+
+        menuArea.setLayout(new GridLayout(2,0,0,0));
+
+        menuArea.setBounds(40,40,740,870);
+
+        menuArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+
+//        JButton button = new JButton("Click me");
+//        //button.setBounds(50,50,100,100);
+//        menuArea.add(button);
+
         add(menuArea, BorderLayout.WEST);
+
+        new ViewParksTool(this,menuArea);
+
+
+
+
+
+
+
+
+
+//        JPanel menuArea = new JPanel();
+//        menuArea.setLayout(new GridLayout(7, 0, 0, 0));
+//        menuArea.setSize(new Dimension(0, 0));
+//        add(menuArea, BorderLayout.WEST);
 
 //        new ViewParksTool(this, menuArea);
 //
@@ -144,24 +183,6 @@ public class ScheduleApp extends JFrame {
 
     }
 
-    // MODIFIES: this
-    // EFFECTS: creates and adds buttons for each day
-    public void createScheduleArea() {
-
-        panel = new JPanel();
-        panel.setLayout(new GridLayout(0, 1));
-        panel.setSize(new Dimension(0, 0));
-        add(BorderLayout.EAST, panel);
-
-
-//        new ScheduleTool(this, panel, 1);
-//        new ScheduleTool(this, panel, 2);
-//        new ScheduleTool(this, panel, 3);
-//        new ScheduleTool(this, panel, 4);
-//        new ScheduleTool(this, panel, 5);
-
-
-    }
 
     // EFFECTS: returns current schedule
     public Schedule getSchedule() {
