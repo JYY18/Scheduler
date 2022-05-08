@@ -77,13 +77,11 @@ public class ScheduleApp extends JFrame {
         getContentPane().setBackground(Color.LIGHT_GRAY);
         getContentPane().setLayout(null);
 
-
-        setVisible(true);
-
         createMenu();
         createScheduleArea();
 
-        add(new JButton("test"));
+        setVisible(true);
+
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -108,8 +106,6 @@ public class ScheduleApp extends JFrame {
 
 
         schedulePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-
-
 
         add(schedulePanel);
 
@@ -138,22 +134,15 @@ public class ScheduleApp extends JFrame {
     public void createMenu() {
 
         JPanel menuArea = new JPanel();
-
-        menuArea.setLayout(new GridLayout(2,0,0,0));
-
         menuArea.setBounds(40,40,740,870);
+        menuArea.setLayout(null);
 
         menuArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
+        add(menuArea);
 
-//        JButton button = new JButton("Click me");
-//        //button.setBounds(50,50,100,100);
-//        menuArea.add(button);
 
-        add(menuArea, BorderLayout.WEST);
-
-        new ViewParksTool(this,menuArea);
-
+        new ViewParksTool(this, menuArea);
 
 
 

@@ -24,9 +24,13 @@ public class ViewParksTool extends Tool implements ActionListener {
     protected void createButton(JComponent parent) {
         button = new JButton("View Parks");
         button.setFont(new Font(null, Font.PLAIN, 30));
+        button.setBounds(150,50,540,100);
+        button.setBackground(Color.LIGHT_GRAY);
+
         button.setFocusable(false);
         button.addActionListener(this);
         addToParent(parent);
+
     }
 
     // EFFECTS: creates new attraction window with its properties when button is clicked
