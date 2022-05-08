@@ -104,8 +104,23 @@ public class ScheduleApp extends JFrame {
 
         schedulePanel.setBounds(850,40,990,870);
 
-
         schedulePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+        //Tool bar
+
+        JToolBar toolBar = new JToolBar();
+        toolBar.setFloatable(false);
+
+        JButton button = new JButton("test");
+
+        button.setBorderPainted(false);
+        //button.setMargin(new Insets(5, 5, 5, 5));
+        button.setSize(35, 35);
+
+        toolBar.add(button);
+
+
+        schedulePanel.add(toolBar,BorderLayout.PAGE_START);
 
         add(schedulePanel);
 
