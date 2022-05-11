@@ -1,18 +1,26 @@
 package ui.tools;
 
+import model.Attraction;
+import model.Day;
+import model.Schedule;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class AttractionsWindow implements ActionListener {
     private String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 
+    private Schedule schedule;
     private JComboBox daysCombo;
     private String fromTime;
     private String toTime;
     private String note;
-    private int day;
+    private int dayNum;
+
+    JComponent scheduleArea;
 
     private JButton addButton;
 
@@ -29,9 +37,12 @@ public class AttractionsWindow implements ActionListener {
 
 
     // TODO need more fields
-    public AttractionsWindow(String attractionName, JComponent parent, String imageName) {
+    public AttractionsWindow(Schedule schedule, JComponent scheduleArea, String attractionName, JComponent parent, String imageName) {
+        this.schedule = schedule;
         daysCombo = new JComboBox(days);
         addButton = new JButton("Add");
+
+        this.scheduleArea = scheduleArea;
 
         this.attractionName = attractionName;
 
@@ -91,8 +102,8 @@ public class AttractionsWindow implements ActionListener {
         daysCombo.setBounds(90,20,246,32);
         actionPanel.add(daysCombo);
 
-        int day = daysCombo.getSelectedIndex() + 1;
-        this.day = day;
+        int dayNum = daysCombo.getSelectedIndex();
+        this.dayNum = dayNum;
     }
 
     public void createTextsAndFields(String label, JComponent actionPanel) {
@@ -114,20 +125,21 @@ public class AttractionsWindow implements ActionListener {
             textLabel.setBounds(20, 70, fromTimePreferredSize.width, fromTimePreferredSize.height);
             textField.setBounds(90,70,textFieldSize.width,29);
 
-            String fromTime = textLabel.getText();
+            String fromTime = textField.getText();
             this.fromTime = fromTime;
+
 
         } if (label == "To:") {
             textLabel.setBounds(20, 120, fromTimePreferredSize.width, fromTimePreferredSize.height);
             textField.setBounds(90,120,textFieldSize.width,29);
 
-            String toTime = textLabel.getText();
+            String toTime = textField.getText();
             this.toTime = toTime;
         } if (label == "Note:") {
             textLabel.setBounds(20, 170, fromTimePreferredSize.width, fromTimePreferredSize.height);
             textField.setBounds(90,170,textFieldSize.width,29);
 
-            String note = textLabel.getText();
+            String note = textField.getText();
             this.note = note;
         }
 
@@ -139,11 +151,22 @@ public class AttractionsWindow implements ActionListener {
         addButton.setFont(new Font(null,Font.PLAIN, 18));
         addButton.setBounds(260,220, 70,35);
         actionPanel.add(addButton);
+        addButton.addActionListener(this);
     }
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == addButton) {
+            Attraction attraction = new Attraction(dayNum, attractionName, fromTime, toTime);
+
+            ArrayList<Day> localDays = schedule.getDays();
+            Day day = localDays.get(dayNum);
+
+            day.addAttractionAndNote(attraction, note);
+
+            new ScheduleListWindow(schedule, day.getDayNum(), scheduleArea);
+        }
 
     }
 }

@@ -84,7 +84,7 @@ public class ViewParksTool extends Tool implements ActionListener {
                         parent.revalidate();
                         parent.repaint();
                         createBackPanelAndButton("ParkList");
-                        new AttractionsWindow("Stanley Park", parent, "park.jpg");
+                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea,"Stanley Park", parent, "park.jpg");
 
                         // TODO
 
@@ -115,9 +115,6 @@ public class ViewParksTool extends Tool implements ActionListener {
         parent.add(parkSelection);
 
         createBackPanelAndButton("Menu");
-
-
-
 
 
     }

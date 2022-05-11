@@ -8,6 +8,7 @@ import persistence.JsonReader;
 import persistence.JsonWriter;
 import ui.tools.LoadTool;
 import ui.tools.SaveTool;
+import ui.tools.ScheduleListWindow;
 import ui.tools.ViewParksTool;
 
 import javax.swing.*;
@@ -64,11 +65,14 @@ public class ScheduleApp extends JFrame {
 
         schedule = new Schedule();
 
+        schedule.createNewDay(); //1
+        schedule.createNewDay(); //2
+        schedule.createNewDay(); //3
+        schedule.createNewDay(); //4
         schedule.createNewDay();
         schedule.createNewDay();
-        schedule.createNewDay();
-        schedule.createNewDay();
-        schedule.createNewDay();
+        schedule.createNewDay(); //7
+
 
         toTime = "";
         fromTime = "";
@@ -117,7 +121,6 @@ public class ScheduleApp extends JFrame {
 
         add(menuArea);
 
-
         new ViewParksTool(this, menuArea, scheduleArea);
 
 
@@ -135,11 +138,8 @@ public class ScheduleApp extends JFrame {
         schedulePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
 
-        JPanel bluePanel = new JPanel();
-        bluePanel.setBounds(25,105,940,740);
-        bluePanel.setBackground(new java.awt.Color(197,218,221));
-
-        schedulePanel.add(bluePanel);
+        scheduleArea.setBounds(25,105,940,740);
+        scheduleArea.setBackground(new java.awt.Color(197,218,221));
 
         //save/load
 
@@ -150,6 +150,12 @@ public class ScheduleApp extends JFrame {
 
         JComboBox daysOfTheWeek = new JComboBox(days);
 
+        daysOfTheWeek.setBounds(750,30,200,45);
+        daysOfTheWeek.setFont(new Font(null, Font.PLAIN, 18));
+
+        schedulePanel.add(daysOfTheWeek);
+
+
         daysOfTheWeek.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -157,42 +163,20 @@ public class ScheduleApp extends JFrame {
 
                 switch (selectedDay) {
                     case "Monday":
-                        // TODO
+                        new ScheduleListWindow(schedule,0,scheduleArea);
                         break;
                     case "Tuesday":
-                        break;
-                    case "Wednesday":
-                        // TODO
-                        break;
-                    case "Thursday":
-                        break;
-                    case "Friday":
-                        break;
-                    case "Saturday":
-                        break;
-                    case "Sunday":
+                        scheduleArea.add(new JLabel("Tuesday"));
                         break;
                     default:
-                        // TODO
+                        System.out.println("Please select");
                 }
 
             }
         });
 
-        daysOfTheWeek.setBounds(750,30,200,45);
-        daysOfTheWeek.setFont(new Font(null, Font.PLAIN, 18));
-
-
-        schedulePanel.add(daysOfTheWeek);
-
-
-
-
-
+        schedulePanel.add(scheduleArea);
         add(schedulePanel);
-
-
-
     }
 
 

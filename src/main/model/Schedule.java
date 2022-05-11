@@ -16,7 +16,7 @@ public class Schedule implements Writable {
     public Schedule() {
         days = new ArrayList<>();
         outputStatements = new ArrayList<>();
-        dayNum = 1;
+        dayNum = 0;
     }
 
     // REQUIRES: each day can only be added to schedule once
@@ -30,8 +30,8 @@ public class Schedule implements Writable {
 
     // EFFECTS: automatically creates and adds a new day with dayNum 1 greater than previous day
     public Day createNewDay() {
-        int size = this.days.size();
-        dayNum = size + 1;
+        //int size = this.days.size();
+        dayNum = dayNum + 1;
         Day newDay = new Day(dayNum);
         this.addDayToSchedule(newDay);
         return newDay;
