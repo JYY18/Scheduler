@@ -15,10 +15,11 @@ public class AttractionsWindow implements ActionListener {
 
     private Schedule schedule;
     private JComboBox daysCombo;
-    private String fromTime;
-    private String toTime;
-    private String note;
     private int dayNum;
+
+    private JTextField fromTimeField;
+    private JTextField toTimeField;
+    private JTextField noteField;
 
     JComponent scheduleArea;
 
@@ -113,6 +114,8 @@ public class AttractionsWindow implements ActionListener {
         JLabel textLabel = new JLabel(label);
         this.textLabel = textLabel;
 
+
+
         JTextField textField = new JTextField(22);
         this.textField = textField;
         Dimension textFieldSize = textField.getPreferredSize();
@@ -125,22 +128,18 @@ public class AttractionsWindow implements ActionListener {
             textLabel.setBounds(20, 70, fromTimePreferredSize.width, fromTimePreferredSize.height);
             textField.setBounds(90,70,textFieldSize.width,29);
 
-            String fromTime = textField.getText();
-            this.fromTime = fromTime;
-
+            this.fromTimeField = textField;
 
         } if (label == "To:") {
             textLabel.setBounds(20, 120, fromTimePreferredSize.width, fromTimePreferredSize.height);
             textField.setBounds(90,120,textFieldSize.width,29);
 
-            String toTime = textField.getText();
-            this.toTime = toTime;
+            this.toTimeField = textField;
+
         } if (label == "Note:") {
             textLabel.setBounds(20, 170, fromTimePreferredSize.width, fromTimePreferredSize.height);
             textField.setBounds(90,170,textFieldSize.width,29);
-
-            String note = textField.getText();
-            this.note = note;
+            this.noteField = textField;
         }
 
         actionPanel.add(textLabel);
@@ -158,6 +157,10 @@ public class AttractionsWindow implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addButton) {
+            String fromTime = fromTimeField.getText();
+            String toTime = textField.getText();
+            String note = textField.getText();
+
             Attraction attraction = new Attraction(dayNum, attractionName, fromTime, toTime);
 
             ArrayList<Day> localDays = schedule.getDays();
