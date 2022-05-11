@@ -59,8 +59,6 @@ public class ViewParksTool extends Tool implements ActionListener {
 
     }
 
-
-
     // EFFECTS: when view parks is clicked
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -152,7 +150,6 @@ public class ViewParksTool extends Tool implements ActionListener {
             });
 
             parent.add(buttonsPanel);
-
     }
 
 }

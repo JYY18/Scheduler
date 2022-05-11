@@ -167,8 +167,9 @@ public class AttractionsWindow implements ActionListener {
             Day day = localDays.get(dayNum);
 
             day.addAttractionAndNote(attraction, note);
+            System.out.println(dayNum);
 
-            new ScheduleListWindow(schedule, day.getDayNum(), scheduleArea);
+            new ScheduleListWindow(schedule, dayNum, scheduleArea);
         }
 
     }

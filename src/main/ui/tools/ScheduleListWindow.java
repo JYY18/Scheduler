@@ -30,25 +30,12 @@ public class ScheduleListWindow {
 
         ArrayList<Attraction> attractions = day.getAttractionsAdded();
 
-        ArrayList<String> columnNames = new ArrayList<>();
-        addColumns(columnNames);
-        scheduleArea.revalidate();
-        scheduleArea.repaint();
-        scheduleArea.add(addContentLine(columnNames));
-
         for (Attraction attraction: attractions) {
             addToData(attraction, scheduleArea);
         }
 
-    }
-
-    // EFFECTS: adds column names to ArrayList
-    public void addColumns(ArrayList<String> columnNames) {
-
-        columnNames.add("Attraction Name");
-        columnNames.add("From Time");
-        columnNames.add("To Time");
-        columnNames.add("Note");
+        scheduleArea.revalidate();
+        scheduleArea.repaint();
 
     }
 
@@ -62,7 +49,6 @@ public class ScheduleListWindow {
             data.add(attraction.getNote());
             contentPanel.add(addContentLine(data));
         }
-
     }
 
     // EFFECTS: adds each information in column form
@@ -71,7 +57,7 @@ public class ScheduleListWindow {
         jp.setLayout(new FlowLayout(FlowLayout.LEFT));
         for (String s : line) {
             JLabel label = new JLabel(s);
-            label.setPreferredSize(new Dimension(228, 15)); // distance from prev column
+            label.setPreferredSize(new Dimension(228, 22)); // distance from prev column
             label.setFont(new Font(null, Font.PLAIN, 18));
             jp.add(label);
         }

@@ -1,22 +1,7 @@
 {"schedule": [
     {
         "day": 1,
-        "events": [
-            {
-                "from time": "From:",
-                "to time": "To:",
-                "Note": "Note:",
-                "name": "Stanley Park",
-                "day": 0
-            },
-            {
-                "from time": "From:",
-                "to time": "To:",
-                "Note": "Note:",
-                "name": "Stanley Park",
-                "day": 0
-            }
-        ]
+        "events": []
     },
     {
         "day": 2,

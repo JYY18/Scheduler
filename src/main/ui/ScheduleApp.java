@@ -38,6 +38,8 @@ public class ScheduleApp extends JFrame {
 
     private String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 
+    private ArrayList<String> columnNames;
+
     private static final String JSON_STORE = "./data/schedule.json";
 
     private JsonWriter jsonWriter;
@@ -81,6 +83,8 @@ public class ScheduleApp extends JFrame {
 
         menuArea = new JPanel();
         scheduleArea = new JPanel();
+
+        columnNames = new ArrayList<>();
     }
 
 
@@ -138,7 +142,7 @@ public class ScheduleApp extends JFrame {
         schedulePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
 
-        scheduleArea.setBounds(25,105,940,740);
+        scheduleArea.setBounds(25,145,940,700);
         scheduleArea.setBackground(new java.awt.Color(197,218,221));
 
         //save/load
@@ -152,7 +156,6 @@ public class ScheduleApp extends JFrame {
 
         daysOfTheWeek.setBounds(750,30,200,45);
         daysOfTheWeek.setFont(new Font(null, Font.PLAIN, 18));
-
         schedulePanel.add(daysOfTheWeek);
 
 
@@ -163,9 +166,13 @@ public class ScheduleApp extends JFrame {
 
                 switch (selectedDay) {
                     case "Monday":
+                        scheduleArea.removeAll();
                         new ScheduleListWindow(schedule,0,scheduleArea);
                         break;
                     case "Tuesday":
+                        scheduleArea.removeAll();
+                        scheduleArea.revalidate();
+                        scheduleArea.repaint();
                         scheduleArea.add(new JLabel("Tuesday"));
                         break;
                     default:
@@ -174,9 +181,18 @@ public class ScheduleApp extends JFrame {
 
             }
         });
-
         schedulePanel.add(scheduleArea);
         add(schedulePanel);
+    }
+
+    public void addContentLine(JComponent columnPanel, ArrayList<String> line) {
+        columnPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        for (String s: line) {
+            JLabel label = new JLabel(s);
+            label.setPreferredSize(new Dimension(230, 25)); // distance from prev column
+            label.setFont(new Font(null, Font.PLAIN, 20));
+            columnPanel.add(label);
+        }
     }
 
 
