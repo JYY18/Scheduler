@@ -158,8 +158,8 @@ public class AttractionsWindow implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addButton) {
             String fromTime = fromTimeField.getText();
-            String toTime = textField.getText();
-            String note = textField.getText();
+            String toTime = toTimeField.getText();
+            String note = noteField.getText();
 
             Attraction attraction = new Attraction(dayNum, attractionName, fromTime, toTime);
 

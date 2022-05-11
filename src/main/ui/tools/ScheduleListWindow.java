@@ -54,14 +54,14 @@ public class ScheduleListWindow {
 
     // EFFECTS: adds attraction information to be displayed
     public void addToData(Attraction attraction, JComponent contentPanel) {
-        //if (attraction.getAttractionDayNumber() == this.dayNum) {
+        if (attraction.getAttractionDayNumber() == this.dayNum) {
             ArrayList<String> data = new ArrayList<>();
             data.add(attraction.getAttractionName());
             data.add(attraction.getAttractionFromTime());
             data.add(attraction.getAttractionToTime());
             data.add(attraction.getNote());
             contentPanel.add(addContentLine(data));
-        //}
+        }
 
     }
 
