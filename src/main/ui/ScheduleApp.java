@@ -6,10 +6,14 @@ import model.EventLog;
 import model.Schedule;
 import persistence.JsonReader;
 import persistence.JsonWriter;
+import ui.tools.LoadTool;
+import ui.tools.SaveTool;
 import ui.tools.ViewParksTool;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
@@ -23,11 +27,15 @@ public class ScheduleApp extends JFrame {
     public static final int HEIGHT = 1000;
 
     private Schedule schedule;
-    //private AttractionTypes types;
     String toTime;
     String fromTime;
     int dayNum;
     ArrayList<Day> dayList;
+
+    JPanel menuArea;
+    JPanel scheduleArea;
+
+    private String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 
     private static final String JSON_STORE = "./data/schedule.json";
 
@@ -66,13 +74,16 @@ public class ScheduleApp extends JFrame {
         fromTime = "";
         dayNum = 1;
         dayList = new ArrayList<>();
+
+        menuArea = new JPanel();
+        scheduleArea = new JPanel();
     }
 
 
     // MODIFIES: this
     // EFFECTS: creates JFrame layout and buttons
     public void initializeGraphics() {
-        setLayout(new BorderLayout());
+        //setLayout(new BorderLayout());
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
         getContentPane().setBackground(Color.LIGHT_GRAY);
         getContentPane().setLayout(null);
@@ -97,93 +108,90 @@ public class ScheduleApp extends JFrame {
     }
 
     // MODIFIES: this
+    // EFFECTS: creates and adds buttons
+    public void createMenu() {
+
+        //JPanel menuArea = new JPanel();
+        menuArea.setBounds(40,40,740,870);
+        menuArea.setLayout(null);
+
+        add(menuArea);
+
+
+        new ViewParksTool(this, menuArea, scheduleArea);
+
+
+    }
+
+    // MODIFIES: this
     // EFFECTS: creates and adds buttons for each day
     public void createScheduleArea() {
 
         JPanel schedulePanel = new JPanel();
 
         schedulePanel.setBounds(850,40,990,870);
+        schedulePanel.setLayout(null);
 
         schedulePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
-        //Tool bar
 
-        JToolBar toolBar = new JToolBar();
-        toolBar.setFloatable(false);
+        JPanel bluePanel = new JPanel();
+        bluePanel.setBounds(25,105,940,740);
+        bluePanel.setBackground(new java.awt.Color(197,218,221));
 
-        JButton button = new JButton("test");
+        schedulePanel.add(bluePanel);
 
-        button.setBorderPainted(false);
-        //button.setMargin(new Insets(5, 5, 5, 5));
-        button.setSize(35, 35);
+        //save/load
 
-        toolBar.add(button);
+        new SaveTool(this,schedulePanel);
+        new LoadTool(this, schedulePanel);
+
+        //dropdown list
+
+        JComboBox daysOfTheWeek = new JComboBox(days);
+
+        daysOfTheWeek.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedDay = (String) daysOfTheWeek.getSelectedItem();
+
+                switch (selectedDay) {
+                    case "Monday":
+                        // TODO
+                        break;
+                    case "Tuesday":
+                        break;
+                    case "Wednesday":
+                        // TODO
+                        break;
+                    case "Thursday":
+                        break;
+                    case "Friday":
+                        break;
+                    case "Saturday":
+                        break;
+                    case "Sunday":
+                        break;
+                    default:
+                        // TODO
+                }
+
+            }
+        });
+
+        daysOfTheWeek.setBounds(750,30,200,45);
+        daysOfTheWeek.setFont(new Font(null, Font.PLAIN, 18));
 
 
-        schedulePanel.add(toolBar,BorderLayout.PAGE_START);
+        schedulePanel.add(daysOfTheWeek);
+
+
+
+
 
         add(schedulePanel);
 
 
-
-
-
-
-//        panel = new JPanel();
-//        panel.setLayout(new GridLayout(0, 1));
-//        panel.setSize(new Dimension(0, 0));
-//        add(BorderLayout.EAST, panel);
-
-
-//        new ScheduleTool(this, panel, 1);
-//        new ScheduleTool(this, panel, 2);
-//        new ScheduleTool(this, panel, 3);
-//        new ScheduleTool(this, panel, 4);
-//        new ScheduleTool(this, panel, 5);
-
-
-    }
-
-    // MODIFIES: this
-    // EFFECTS: creates and adds buttons
-    public void createMenu() {
-
-        JPanel menuArea = new JPanel();
-        menuArea.setBounds(40,40,740,870);
-        menuArea.setLayout(null);
-
-        menuArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-
-        add(menuArea);
-
-
-        new ViewParksTool(this, menuArea);
-
-
-
-
-
-
-
-
-//        JPanel menuArea = new JPanel();
-//        menuArea.setLayout(new GridLayout(7, 0, 0, 0));
-//        menuArea.setSize(new Dimension(0, 0));
-//        add(menuArea, BorderLayout.WEST);
-
-//        new ViewParksTool(this, menuArea);
-//
-//        new ViewTrailsTool(this, menuArea);
-//
-//        new ViewRestaurantsTool(this, menuArea);
-//
-//        new ViewBeachesTool(this, menuArea);
-//
-//        new DeleteEventTool(this, menuArea);
-//
-//        new SaveTool(this, menuArea);
-//
-//        new LoadTool(this, menuArea);
 
     }
 
