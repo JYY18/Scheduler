@@ -150,6 +150,19 @@ public class ScheduleApp extends JFrame {
         new SaveTool(this,schedulePanel);
         new LoadTool(this, schedulePanel);
 
+        JPanel columnNamesPanel = new JPanel();
+        columnNamesPanel.setBackground(new java.awt.Color(201,228,223));
+        columnNamesPanel.setBounds(25,95,940,40);
+
+        columnNames.add("Attraction Name");
+        columnNames.add("From");
+        columnNames.add("To");
+        columnNames.add("Note");
+
+        addContentLine(columnNamesPanel, columnNames);
+
+        schedulePanel.add(columnNamesPanel);
+
         //dropdown list
 
         JComboBox daysOfTheWeek = new JComboBox(days);
