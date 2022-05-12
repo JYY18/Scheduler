@@ -35,6 +35,9 @@ public class ScheduleApp extends JFrame {
 
     JPanel menuArea;
     JPanel scheduleArea;
+    JPanel MondayPanel;
+    JPanel TuesdayPanel;
+
 
     private String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 
@@ -83,6 +86,8 @@ public class ScheduleApp extends JFrame {
 
         menuArea = new JPanel();
         scheduleArea = new JPanel();
+        MondayPanel = new JPanel();
+        TuesdayPanel = new JPanel();
 
         columnNames = new ArrayList<>();
     }
@@ -125,6 +130,8 @@ public class ScheduleApp extends JFrame {
 
         add(menuArea);
 
+        //TODO
+        // scheduleArea set to NULL
         new ViewParksTool(this, menuArea, scheduleArea);
 
 
@@ -140,10 +147,6 @@ public class ScheduleApp extends JFrame {
         schedulePanel.setLayout(null);
 
         schedulePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-
-
-        scheduleArea.setBounds(25,145,940,700);
-        scheduleArea.setBackground(new java.awt.Color(197,218,221));
 
         //save/load
 
@@ -163,6 +166,10 @@ public class ScheduleApp extends JFrame {
 
         schedulePanel.add(columnNamesPanel);
 
+        scheduleArea.setBounds(25,145,940,700);
+        scheduleArea.setBackground(new java.awt.Color(197,218,221));
+        scheduleArea.setLayout(null);
+
         //dropdown list
 
         JComboBox daysOfTheWeek = new JComboBox(days);
@@ -180,13 +187,28 @@ public class ScheduleApp extends JFrame {
                 switch (selectedDay) {
                     case "Monday":
                         scheduleArea.removeAll();
-                        new ScheduleListWindow(schedule,0,scheduleArea);
+                        scheduleArea.revalidate();
+                        scheduleArea.repaint();
+
+                        MondayPanel.removeAll();
+                        MondayPanel.setBounds(0,0,940,700);
+                        MondayPanel.setBackground(Color.BLUE);
+                        scheduleArea.add(MondayPanel);
+                        new ScheduleListWindow(schedule,0,MondayPanel);
+
                         break;
                     case "Tuesday":
                         scheduleArea.removeAll();
                         scheduleArea.revalidate();
                         scheduleArea.repaint();
-                        scheduleArea.add(new JLabel("Tuesday"));
+
+                        TuesdayPanel.removeAll();
+
+                        TuesdayPanel.setBounds(10,10,900,660);
+                        TuesdayPanel.setBackground(Color.RED);
+                        new ScheduleListWindow(schedule,1,TuesdayPanel);
+                        scheduleArea.add(TuesdayPanel);
+
                         break;
                     default:
                         System.out.println("Please select");

@@ -103,8 +103,6 @@ public class AttractionsWindow implements ActionListener {
         daysCombo.setBounds(90,20,246,32);
         actionPanel.add(daysCombo);
 
-        int dayNum = daysCombo.getSelectedIndex();
-        this.dayNum = dayNum;
     }
 
     public void createTextsAndFields(String label, JComponent actionPanel) {
@@ -153,13 +151,15 @@ public class AttractionsWindow implements ActionListener {
         addButton.addActionListener(this);
     }
 
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addButton) {
             String fromTime = fromTimeField.getText();
             String toTime = toTimeField.getText();
             String note = noteField.getText();
+
+            int dayNum = daysCombo.getSelectedIndex();
+            this.dayNum = dayNum;
 
             Attraction attraction = new Attraction(dayNum, attractionName, fromTime, toTime);
 
@@ -169,7 +169,12 @@ public class AttractionsWindow implements ActionListener {
             day.addAttractionAndNote(attraction, note);
             System.out.println(dayNum);
 
-            new ScheduleListWindow(schedule, dayNum, scheduleArea);
+            JPanel subPanel = new JPanel();
+            subPanel.setBounds(0,0,940,700);
+            subPanel.setBackground(Color.WHITE);
+            scheduleArea.add(subPanel);
+
+            new ScheduleListWindow(schedule, dayNum, subPanel);
         }
 
     }

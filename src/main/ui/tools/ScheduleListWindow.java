@@ -23,6 +23,7 @@ public class ScheduleListWindow {
     }
 
     public void initializeGraphics() {
+        //scheduleArea.removeAll();
 
         ArrayList<Day> days = schedule.getDays();
 
