@@ -24,9 +24,11 @@ public class ViewParksTool extends Tool implements ActionListener {
 
     JPanel parkSelection;
 
+    JComboBox daysOfTheWeek;
+
 
     // Constructor
-    public ViewParksTool(ScheduleApp scheduleApp, JComponent parent, JComponent scheduleArea) {
+    public ViewParksTool(ScheduleApp scheduleApp, JComponent parent, JComponent scheduleArea, JComboBox daysOfTheWeek) {
         super(scheduleApp, parent);
         this.parent = parent;
         this.scheduleArea = scheduleArea;
@@ -40,6 +42,8 @@ public class ViewParksTool extends Tool implements ActionListener {
         b5 = new JButton("5");
 
         parkSelection = new JPanel(new GridLayout(5, 0, 0, 0));
+
+        this.daysOfTheWeek = daysOfTheWeek;
 
     }
 
@@ -82,7 +86,7 @@ public class ViewParksTool extends Tool implements ActionListener {
                         parent.revalidate();
                         parent.repaint();
                         createBackPanelAndButton("ParkList");
-                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea,"Stanley Park", parent, "park.jpg");
+                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea,"Stanley Park", parent, "park.jpg", daysOfTheWeek);
 
                         // TODO
 

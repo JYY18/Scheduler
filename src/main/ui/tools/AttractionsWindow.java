@@ -36,9 +36,11 @@ public class AttractionsWindow implements ActionListener {
 
     String picFileName;
 
+    JComboBox daysOfTheWeek;
+
 
     // TODO need more fields
-    public AttractionsWindow(Schedule schedule, JComponent scheduleArea, String attractionName, JComponent parent, String imageName) {
+    public AttractionsWindow(Schedule schedule, JComponent scheduleArea, String attractionName, JComponent parent, String imageName, JComboBox daysOfTheWeek) {
         this.schedule = schedule;
         daysCombo = new JComboBox(days);
         addButton = new JButton("Add");
@@ -50,6 +52,8 @@ public class AttractionsWindow implements ActionListener {
         this.parent = parent;
 
         this.picFileName = imageName;
+
+        this.daysOfTheWeek = daysOfTheWeek;
 
         initializeGraphics(parent);
 
@@ -171,8 +175,31 @@ public class AttractionsWindow implements ActionListener {
 
             JPanel subPanel = new JPanel();
             subPanel.setBounds(0,0,940,700);
-            subPanel.setBackground(Color.WHITE);
+            subPanel.setBackground(new java.awt.Color(197,218,221));
             scheduleArea.add(subPanel);
+
+            daysOfTheWeek.setEditable(true);
+
+
+            if (dayNum == 0) {
+                daysOfTheWeek.setSelectedItem("Monday");
+            } else if (dayNum == 1) {
+                daysOfTheWeek.setSelectedItem("Tuesday");
+            } else if (dayNum ==2) {
+                daysOfTheWeek.setSelectedItem("Wednesday");
+            } else if( dayNum == 3) {
+                daysOfTheWeek.setSelectedItem("Thursday");
+            } else if (dayNum ==4) {
+                daysOfTheWeek.setSelectedItem("Friday");
+            } else if( dayNum ==5) {
+                daysOfTheWeek.setSelectedItem("Saturday");
+            } else if (dayNum == 6) {
+                daysOfTheWeek.setSelectedItem("Sunday");
+            }
+
+            daysOfTheWeek.setEditable(false);
+            daysOfTheWeek.revalidate();
+            daysOfTheWeek.repaint();
 
             new ScheduleListWindow(schedule, dayNum, subPanel);
         }

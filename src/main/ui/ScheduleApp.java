@@ -38,12 +38,16 @@ public class ScheduleApp extends JFrame {
     JPanel MondayPanel;
     JPanel TuesdayPanel;
 
+    JComboBox daysOfTheWeek;
 
     private String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 
     private ArrayList<String> columnNames;
 
     private static final String JSON_STORE = "./data/schedule.json";
+
+    Color scheduleAreaColour = new java.awt.Color(197,218,221);
+
 
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
@@ -89,6 +93,8 @@ public class ScheduleApp extends JFrame {
         MondayPanel = new JPanel();
         TuesdayPanel = new JPanel();
 
+        daysOfTheWeek = new JComboBox(days);
+
         columnNames = new ArrayList<>();
     }
 
@@ -132,7 +138,7 @@ public class ScheduleApp extends JFrame {
 
         //TODO
         // scheduleArea set to NULL
-        new ViewParksTool(this, menuArea, scheduleArea);
+        new ViewParksTool(this, menuArea, scheduleArea, daysOfTheWeek);
 
 
     }
@@ -172,11 +178,10 @@ public class ScheduleApp extends JFrame {
 
         //dropdown list
 
-        JComboBox daysOfTheWeek = new JComboBox(days);
-
         daysOfTheWeek.setBounds(750,30,200,45);
         daysOfTheWeek.setFont(new Font(null, Font.PLAIN, 18));
         schedulePanel.add(daysOfTheWeek);
+
 
 
         daysOfTheWeek.addActionListener(new ActionListener() {
@@ -192,7 +197,7 @@ public class ScheduleApp extends JFrame {
 
                         MondayPanel.removeAll();
                         MondayPanel.setBounds(0,0,940,700);
-                        MondayPanel.setBackground(Color.BLUE);
+                        MondayPanel.setBackground(scheduleAreaColour);
                         scheduleArea.add(MondayPanel);
                         new ScheduleListWindow(schedule,0,MondayPanel);
 
@@ -204,8 +209,8 @@ public class ScheduleApp extends JFrame {
 
                         TuesdayPanel.removeAll();
 
-                        TuesdayPanel.setBounds(10,10,900,660);
-                        TuesdayPanel.setBackground(Color.RED);
+                        TuesdayPanel.setBounds(0,0,940,700);
+                        TuesdayPanel.setBackground(scheduleAreaColour);
                         new ScheduleListWindow(schedule,1,TuesdayPanel);
                         scheduleArea.add(TuesdayPanel);
 

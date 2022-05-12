@@ -13,7 +13,7 @@ public class ScheduleListWindow {
     private int dayNum;
     JComponent scheduleArea;
 
-    public ScheduleListWindow(Schedule schedule, int dayNum, JComponent scheduleArea) {
+    public ScheduleListWindow(Schedule schedule, int dayNum, JComponent scheduleArea){
         this.schedule = schedule;
         this.dayNum = dayNum;
         this.scheduleArea = scheduleArea;
