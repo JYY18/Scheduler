@@ -9,18 +9,18 @@ import java.awt.event.ActionListener;
 
 // Tool to open park selection window
 public class ViewParksTool extends Tool implements ActionListener {
-    private String[] parks = {"Stanley Park", "Queen Elizabeth Park", "Lynn Canyon"};
+    private String[] parks = {"Stanley Park", "Queen Elizabeth Park", "Nitobe Memorial Garden", "Vanier park", "Capilano Suspension Bridge Park"};
     JComponent parent;
     JComponent scheduleArea; // to be passed to attractionsWindow
 
     ScheduleApp scheduleApp;
-    JButton parkTest;
-    JButton parkTest2;
+    JButton stanleyPark;
+    JButton queenElizabethPark;
 
 
-    JButton b3;
-    JButton b4;
-    JButton b5;
+    JButton nitobeMemorialGarden;
+    JButton vanierPark;
+    JButton capilanoSuspensionBridgePark;
 
     JPanel parkSelection;
 
@@ -35,11 +35,11 @@ public class ViewParksTool extends Tool implements ActionListener {
 
         this.scheduleApp = scheduleApp;
 
-        parkTest = new JButton("Stanley Park");
-        parkTest2 = new JButton("Fleetwood Park");
-        b3 = new JButton("3");
-        b4 = new JButton("4");
-        b5 = new JButton("5");
+        stanleyPark = new JButton("Stanley Park");
+        queenElizabethPark = new JButton("Queen Elizabeth Park");
+        nitobeMemorialGarden = new JButton("Nitobe Memorial Garden");
+        vanierPark = new JButton("Vanier Garden");
+        capilanoSuspensionBridgePark = new JButton("Capilino SuspensionBridge Park");
 
         parkSelection = new JPanel(new GridLayout(5, 0, 0, 0));
 
@@ -67,7 +67,6 @@ public class ViewParksTool extends Tool implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == button) {
-            //new AttractionsWindow(scheduleApp.getSchedule(), "Parks", parks, "park.jpg");
 
             parent.removeAll();
             parent.revalidate();
@@ -81,37 +80,45 @@ public class ViewParksTool extends Tool implements ActionListener {
             ActionListener parksActionListener = new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    if (e.getSource() == parkTest) {
-                        parent.removeAll();
-                        parent.revalidate();
-                        parent.repaint();
-                        createBackPanelAndButton("ParkList");
-                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea,"Stanley Park", parent, "park.jpg", daysOfTheWeek);
+                    parent.removeAll();
+                    parent.revalidate();
+                    parent.repaint();
+                    createBackPanelAndButton("ParkList");
+                    if (e.getSource() == stanleyPark) {
+                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea,"Stanley Park", parent, "stanleyPark.jpg", daysOfTheWeek);
 
-                        // TODO
+                    } else if (e.getSource() == queenElizabethPark) {
+                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Queen Elizabeth Park", parent, "queenElizabethPark.jpg", daysOfTheWeek);
 
-                    } else if (e.getSource() == parkTest2) {
-                        System.out.println("F");
+                    } else if (e.getSource() == nitobeMemorialGarden) {
+                        new AttractionsWindow(scheduleApp.getSchedule(),scheduleArea, "Nitobe Memorial Garden", parent, "nitobeMemorialGarden.jpg", daysOfTheWeek);
+                    } else if (e.getSource() == vanierPark) {
+                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Vanier Park", parent, "vanierPark.jpg", daysOfTheWeek);
+                    } else if (e.getSource() == capilanoSuspensionBridgePark) {
+                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Capilano Suspension Bridge Park", parent, "capilanoSuspensionBridgePark.jpg", daysOfTheWeek);
                     }
                 }
             };
 
-            parkTest.addActionListener(parksActionListener);
-            parkTest2.addActionListener(parksActionListener);
+            stanleyPark.addActionListener(parksActionListener);
+            queenElizabethPark.addActionListener(parksActionListener);
+            nitobeMemorialGarden.addActionListener(parksActionListener);
+            vanierPark.addActionListener(parksActionListener);
+            capilanoSuspensionBridgePark.addActionListener(parksActionListener);
         }
     }
 
     public void createParkSelection(JComponent parkSelection) {
 
-        parkTest.setFont(new Font(null, Font.PLAIN, 30));
-        parkSelection.add(parkTest);
+        stanleyPark.setFont(new Font(null, Font.PLAIN, 30));
+        parkSelection.add(stanleyPark);
 
-        parkTest2.setFont(new Font(null, Font.PLAIN, 30));
-        parkSelection.add(parkTest2);
+        queenElizabethPark.setFont(new Font(null, Font.PLAIN, 30));
+        parkSelection.add(queenElizabethPark);
 
-        parkSelection.add(b3);
-        parkSelection.add(b4);
-        parkSelection.add(b5);
+        parkSelection.add(nitobeMemorialGarden);
+        parkSelection.add(vanierPark);
+        parkSelection.add(capilanoSuspensionBridgePark);
 
 
         parent.add(parkSelection);

@@ -39,7 +39,6 @@ public class AttractionsWindow implements ActionListener {
     JComboBox daysOfTheWeek;
 
 
-    // TODO need more fields
     public AttractionsWindow(Schedule schedule, JComponent scheduleArea, String attractionName, JComponent parent, String imageName, JComboBox daysOfTheWeek) {
         this.schedule = schedule;
         daysCombo = new JComboBox(days);
@@ -60,8 +59,13 @@ public class AttractionsWindow implements ActionListener {
     }
 
     public void initializeGraphics(JComponent parent) {
+        JPanel mainLabelsPanel = new JPanel();
+        //mainLabelsPanel.setBackground(Color.WHITE);
+        mainLabelsPanel.setLayout(null);
+        mainLabelsPanel.setBounds(0,0, 740, 465);
+        parent.add(mainLabelsPanel);
 
-        addLabels(parent);
+        addLabels(mainLabelsPanel);
         JPanel actionPanel = new JPanel();
         actionPanel.setBackground(Color.GRAY);
         actionPanel.setBounds(0, 470, 450, 300);
@@ -71,21 +75,29 @@ public class AttractionsWindow implements ActionListener {
 
     public void addLabels(JComponent parent) {
         JPanel titlePanel = new JPanel();
-        titlePanel.setBackground(Color.WHITE);
-        titlePanel.setBounds(0, 0, 740, 460);
-
+        //titlePanel.setBackground(Color.WHITE);
+        titlePanel.setBounds(0, 5, 740, 45);
 
         JLabel label = new JLabel(attractionName);
         label.setFont(new Font(null, Font.PLAIN, 27));
-
+        Dimension labelSize = label.getPreferredSize();
         titlePanel.add(label);
 
-        JLabel picLabel = new JLabel(new ImageIcon("image\\" + picFileName));
-        picLabel.setPreferredSize(new Dimension(650, 350));
-        titlePanel.add(picLabel);
 
+        JPanel test = new JPanel();
+        //test.setBackground(Color.WHITE);
+        test.setBounds(20,45,700,400);
+
+        ImageIcon image = new ImageIcon("image\\" + picFileName);
+        JLabel picLabel = new JLabel(image);
+        picLabel.setMaximumSize(new Dimension(700,400));
+        picLabel.setPreferredSize(new Dimension(700,400));
+        test.add(picLabel);
+
+        parent.add(test);
 
         parent.add(titlePanel);
+
 
     }
 
@@ -115,7 +127,6 @@ public class AttractionsWindow implements ActionListener {
 
         JLabel textLabel = new JLabel(label);
         this.textLabel = textLabel;
-
 
 
         JTextField textField = new JTextField(22);

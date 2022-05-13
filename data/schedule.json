@@ -1,13 +1,43 @@
 {"schedule": [
     {
         "day": 1,
-        "events": [{
-            "from time": "",
-            "to time": "",
-            "Note": "",
-            "name": "Stanley Park",
-            "day": 0
-        }]
+        "events": [
+            {
+                "from time": "",
+                "to time": "",
+                "Note": "",
+                "name": "Nitobe Memorial Garden",
+                "day": 0
+            },
+            {
+                "from time": "",
+                "to time": "",
+                "Note": "",
+                "name": "Nitobe Memorial Garden",
+                "day": 0
+            },
+            {
+                "from time": "",
+                "to time": "",
+                "Note": "",
+                "name": "Stanley Park",
+                "day": 0
+            },
+            {
+                "from time": "",
+                "to time": "",
+                "Note": "",
+                "name": "Stanley Park",
+                "day": 0
+            },
+            {
+                "from time": "",
+                "to time": "",
+                "Note": "",
+                "name": "Stanley Park",
+                "day": 0
+            }
+        ]
     },
     {
         "day": 2,
