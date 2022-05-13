@@ -6,10 +6,7 @@ import model.EventLog;
 import model.Schedule;
 import persistence.JsonReader;
 import persistence.JsonWriter;
-import ui.tools.LoadTool;
-import ui.tools.SaveTool;
-import ui.tools.ScheduleListWindow;
-import ui.tools.ViewParksTool;
+import ui.tools.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -134,8 +131,6 @@ public class ScheduleApp extends JFrame {
 
         add(menuArea);
 
-        //TODO
-        // scheduleArea set to NULL
         new ViewParksTool(this, menuArea, scheduleArea, daysOfTheWeek);
 
 
@@ -156,6 +151,13 @@ public class ScheduleApp extends JFrame {
 
         new SaveTool(this,schedulePanel);
         new LoadTool(this, schedulePanel);
+
+        // delete windows tool
+
+        new DeleteEventTool(this, schedulePanel);
+
+
+
 
         JPanel columnNamesPanel = new JPanel();
         columnNamesPanel.setBackground(new java.awt.Color(201,228,223));
@@ -187,7 +189,6 @@ public class ScheduleApp extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String selectedDay = (String) daysOfTheWeek.getSelectedItem();
 
-
                 scheduleArea.removeAll();
                 scheduleArea.revalidate();
                 scheduleArea.repaint();
@@ -200,8 +201,6 @@ public class ScheduleApp extends JFrame {
                     case "Monday":
                         scheduleArea.add(daysPanel);
                         new ScheduleListWindow(schedule,0, daysPanel);
-
-
                         break;
                     case "Tuesday":
                         scheduleArea.add(daysPanel);
@@ -273,6 +272,10 @@ public class ScheduleApp extends JFrame {
     public void loadSchedule() {
         try {
             schedule = jsonReader.read();
+            menuArea.removeAll();
+            menuArea.revalidate();
+            menuArea.repaint();
+            this.createMenu();
             System.out.println("Loaded schedule" + " from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);

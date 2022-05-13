@@ -73,7 +73,7 @@ public class ViewParksTool extends Tool implements ActionListener {
             parent.repaint();
 
 
-            parkSelection.setBounds(0, 0, 740, 770);
+            parkSelection.setBounds(0, 0, 740, 780);
 
             createParkSelection(parkSelection);
 
@@ -85,17 +85,19 @@ public class ViewParksTool extends Tool implements ActionListener {
                     parent.repaint();
                     createBackPanelAndButton("ParkList");
                     if (e.getSource() == stanleyPark) {
-                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea,"Stanley Park", parent, "stanleyPark.jpg", daysOfTheWeek);
+                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea,"Stanley Park", parent, "stanleyPark.jpg", "MapStanley.jpg",daysOfTheWeek);
 
                     } else if (e.getSource() == queenElizabethPark) {
-                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Queen Elizabeth Park", parent, "queenElizabethPark.jpg", daysOfTheWeek);
+                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Queen Elizabeth Park", parent, "queenElizabethPark.jpg", "MapQueenElizabeth.jpg", daysOfTheWeek);
 
                     } else if (e.getSource() == nitobeMemorialGarden) {
-                        new AttractionsWindow(scheduleApp.getSchedule(),scheduleArea, "Nitobe Memorial Garden", parent, "nitobeMemorialGarden.jpg", daysOfTheWeek);
+                        new AttractionsWindow(scheduleApp.getSchedule(),scheduleArea, "Nitobe Memorial Garden", parent, "nitobeMemorialGarden.jpg", "MapNitobe.jpg",daysOfTheWeek);
+
                     } else if (e.getSource() == vanierPark) {
-                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Vanier Park", parent, "vanierPark.jpg", daysOfTheWeek);
+                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Vanier Park", parent, "vanierPark.jpg", "MapVanier.jpg", daysOfTheWeek);
+
                     } else if (e.getSource() == capilanoSuspensionBridgePark) {
-                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Capilano Suspension Bridge Park", parent, "capilanoSuspensionBridgePark.jpg", daysOfTheWeek);
+                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Capilano Suspension Bridge Park", parent, "capilanoSuspensionBridgePark.jpg","MapCapilano.jpg", daysOfTheWeek);
                     }
                 }
             };
@@ -116,8 +118,13 @@ public class ViewParksTool extends Tool implements ActionListener {
         queenElizabethPark.setFont(new Font(null, Font.PLAIN, 30));
         parkSelection.add(queenElizabethPark);
 
+        nitobeMemorialGarden.setFont(new Font(null, Font.PLAIN, 30));
         parkSelection.add(nitobeMemorialGarden);
+
+        vanierPark.setFont(new Font(null, Font.PLAIN, 30));
         parkSelection.add(vanierPark);
+
+        capilanoSuspensionBridgePark.setFont(new Font(null, Font.PLAIN, 30));
         parkSelection.add(capilanoSuspensionBridgePark);
 
 
@@ -136,14 +143,13 @@ public class ViewParksTool extends Tool implements ActionListener {
                 }
             };
 
-            buttonsPanel.setBounds(0,770,740,100);
-            //buttonsPanel.setBackground(Color.WHITE);
+            buttonsPanel.setBounds(0,780,740,90);
             buttonsPanel.setLayout(null);
 
 
             JButton back = new JButton("Back");
             back.setFont(new Font(null, Font.PLAIN, 18));
-            back.setBounds(20,20,100,50);
+            back.setBounds(20,22,90,45);
             buttonsPanel.add(back);
             back.addActionListener(new ActionListener() {
                 @Override

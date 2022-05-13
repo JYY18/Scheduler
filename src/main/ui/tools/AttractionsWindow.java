@@ -5,6 +5,7 @@ import model.Day;
 import model.Schedule;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,11 +36,12 @@ public class AttractionsWindow implements ActionListener {
     JComponent parent;
 
     String picFileName;
+    String mapName;
 
     JComboBox daysOfTheWeek;
 
 
-    public AttractionsWindow(Schedule schedule, JComponent scheduleArea, String attractionName, JComponent parent, String imageName, JComboBox daysOfTheWeek) {
+    public AttractionsWindow(Schedule schedule, JComponent scheduleArea, String attractionName, JComponent parent, String imageName, String mapName, JComboBox daysOfTheWeek) {
         this.schedule = schedule;
         daysCombo = new JComboBox(days);
         addButton = new JButton("Add");
@@ -51,6 +53,7 @@ public class AttractionsWindow implements ActionListener {
         this.parent = parent;
 
         this.picFileName = imageName;
+        this.mapName = mapName;
 
         this.daysOfTheWeek = daysOfTheWeek;
 
@@ -67,8 +70,16 @@ public class AttractionsWindow implements ActionListener {
 
         addLabels(mainLabelsPanel);
         JPanel actionPanel = new JPanel();
-        actionPanel.setBackground(Color.GRAY);
-        actionPanel.setBounds(0, 470, 450, 300);
+        //actionPanel.setBackground(Color.GRAY);
+        actionPanel.setBounds(20, 470, 390, 280);
+        actionPanel.setBorder(new LineBorder(Color.BLACK, 2));
+
+        JPanel mapPanel = new JPanel();
+        mapPanel.setBounds(440,470,280,280);
+        JLabel mapLabel = new JLabel(new ImageIcon("image\\" + mapName));
+        mapPanel.add(mapLabel);
+
+        parent.add(mapPanel);
         parent.add(actionPanel);
         addAttractionButtons(actionPanel);
     }
@@ -80,7 +91,6 @@ public class AttractionsWindow implements ActionListener {
 
         JLabel label = new JLabel(attractionName);
         label.setFont(new Font(null, Font.PLAIN, 27));
-        Dimension labelSize = label.getPreferredSize();
         titlePanel.add(label);
 
 
@@ -176,13 +186,14 @@ public class AttractionsWindow implements ActionListener {
             int dayNum = daysCombo.getSelectedIndex();
             this.dayNum = dayNum;
 
-            Attraction attraction = new Attraction(dayNum, attractionName, fromTime, toTime);
 
             ArrayList<Day> localDays = schedule.getDays();
             Day day = localDays.get(dayNum);
 
+
+            Attraction attraction = new Attraction(dayNum, attractionName, fromTime, toTime);
+
             day.addAttractionAndNote(attraction, note);
-            System.out.println(dayNum);
 
             JPanel subPanel = new JPanel();
             subPanel.setBounds(0,0,940,700);

@@ -15,6 +15,8 @@ public class LoadTool extends Tool implements ActionListener {
     private static final String JSON_STORE = "./data/schedule.json";
     private JsonReader jsonReader;
 
+
+
     // Constructor
     public LoadTool(ScheduleApp scheduleApp, JComponent parent) {
         super(scheduleApp, parent);
