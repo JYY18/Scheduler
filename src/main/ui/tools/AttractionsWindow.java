@@ -71,11 +71,11 @@ public class AttractionsWindow implements ActionListener {
         addLabels(mainLabelsPanel);
         JPanel actionPanel = new JPanel();
         //actionPanel.setBackground(Color.GRAY);
-        actionPanel.setBounds(20, 470, 390, 280);
+        actionPanel.setBounds(20, 480, 390, 280);
         actionPanel.setBorder(new LineBorder(Color.BLACK, 2));
 
         JPanel mapPanel = new JPanel();
-        mapPanel.setBounds(440,470,280,280);
+        mapPanel.setBounds(440,480,280,280);
         JLabel mapLabel = new JLabel(new ImageIcon("image\\" + mapName));
         mapPanel.add(mapLabel);
 
@@ -86,28 +86,28 @@ public class AttractionsWindow implements ActionListener {
 
     public void addLabels(JComponent parent) {
         JPanel titlePanel = new JPanel();
-        //titlePanel.setBackground(Color.WHITE);
-        titlePanel.setBounds(0, 5, 740, 45);
+        titlePanel.setBounds(1, 5, 735, 45);
 
         JLabel label = new JLabel(attractionName);
         label.setFont(new Font(null, Font.PLAIN, 27));
         titlePanel.add(label);
 
 
-        JPanel test = new JPanel();
+        JPanel imagePanel = new JPanel();
         //test.setBackground(Color.WHITE);
-        test.setBounds(20,45,700,400);
+        imagePanel.setBounds(20,45,700,400);
+
 
         ImageIcon image = new ImageIcon("image\\" + picFileName);
         JLabel picLabel = new JLabel(image);
         picLabel.setMaximumSize(new Dimension(700,400));
         picLabel.setPreferredSize(new Dimension(700,400));
-        test.add(picLabel);
+        imagePanel.add(picLabel);
 
-        parent.add(test);
+        parent.add(imagePanel);
 
         parent.add(titlePanel);
-
+        parent.setBorder(new LineBorder(Color.BLACK,1));
 
     }
 

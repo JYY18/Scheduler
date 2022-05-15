@@ -9,6 +9,7 @@ import persistence.JsonWriter;
 import ui.tools.*;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -125,13 +126,19 @@ public class ScheduleApp extends JFrame {
     // EFFECTS: creates and adds buttons
     public void createMenu() {
 
-        //JPanel menuArea = new JPanel();
         menuArea.setBounds(40,40,740,870);
         menuArea.setLayout(null);
+        menuArea.setBorder(new LineBorder(Color.BLACK, 1));
 
         add(menuArea);
 
         new ViewParksTool(this, menuArea, scheduleArea, daysOfTheWeek);
+        new ViewBeachesTool(this, menuArea, scheduleArea, daysOfTheWeek);
+        new ViewTrailsTool(this, menuArea, scheduleArea, daysOfTheWeek);
+        new ViewRestaurantsTool(this, menuArea, scheduleArea, daysOfTheWeek);
+        new ViewShoppingTool(this, menuArea, scheduleArea, daysOfTheWeek);
+        new ViewOtherTool(this, menuArea, scheduleArea, daysOfTheWeek);
+
 
 
     }
