@@ -7,6 +7,8 @@ import model.Schedule;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ScheduleListWindow {
     private Schedule schedule;
@@ -30,6 +32,16 @@ public class ScheduleListWindow {
         Day day = days.get(dayNum);
 
         ArrayList<Attraction> attractions = day.getAttractionsAdded();
+
+
+        Collections.sort(attractions, new Comparator<Attraction>() {
+            @Override
+            public int compare(Attraction o1, Attraction o2) {
+                return o1.getAttractionFromTime().compareTo(o2.getAttractionFromTime());
+            }
+        });
+
+
 
         for (Attraction attraction: attractions) {
             addToData(attraction, scheduleArea);
