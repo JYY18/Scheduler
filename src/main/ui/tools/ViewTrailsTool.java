@@ -51,11 +51,10 @@ public class ViewTrailsTool extends Tool implements ActionListener {
         buttonList.add(salishTrail);
         buttonList.add(lynnPeakTrail);
 
-        for (JButton b: buttonList) {
-            b.setBackground(new Color(238,238,238));
-            b.setBorder(new LineBorder(Color.BLACK,1));
+        for (JButton b : buttonList) {
+            b.setBackground(new Color(238, 238, 238));
+            b.setBorder(new LineBorder(Color.BLACK, 1));
         }
-
 
 
         trailSelection = new JPanel(new GridLayout(5, 0, 0, 0));
@@ -72,7 +71,7 @@ public class ViewTrailsTool extends Tool implements ActionListener {
     protected void createButton(JComponent parent) {
         button = new JButton("View Trails");
         button.setFont(new Font(null, Font.PLAIN, 30));
-        button.setBounds(100,314,540,100);
+        button.setBounds(100, 314, 540, 100);
         button.setBackground(Color.LIGHT_GRAY);
 
         button.setFocusable(false);
@@ -105,19 +104,19 @@ public class ViewTrailsTool extends Tool implements ActionListener {
                     returnToMenu();
 
                     if (e.getSource() == grouseGrindTrail) {
-                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea,"Grouse Grind Trail", parent, "grouseGrindTrail.jpg", "MapGrouse.jpg",daysOfTheWeek);
+                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Grouse Grind Trail", parent, "grouseGrindTrail.jpg", "MapGrouse.jpg", daysOfTheWeek);
 
                     } else if (e.getSource() == deepCoveQuarryRock) {
                         new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Deep Cove Quarry Rock", parent, "deepCoveQuarryRock.jpg", "MapDeep.jpg", daysOfTheWeek);
 
                     } else if (e.getSource() == saintMarksSUmmit) {
-                        new AttractionsWindow(scheduleApp.getSchedule(),scheduleArea, "Saint Marks Summit", parent, "saintMarksSummit.jpg", "MapSaint.jpg",daysOfTheWeek);
+                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Saint Marks Summit", parent, "saintMarksSummit.jpg", "MapSaint.jpg", daysOfTheWeek);
 
                     } else if (e.getSource() == salishTrail) {
                         new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Salish Trail", parent, "salishTrail.jpg", "MapSalish.jpg", daysOfTheWeek);
 
                     } else if (e.getSource() == lynnPeakTrail) {
-                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Lynn Peak Trail", parent, "lynnPeakTrail.jpg","MapLynn.jpg", daysOfTheWeek);
+                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Lynn Peak Trail", parent, "lynnPeakTrail.jpg", "MapLynn.jpg", daysOfTheWeek);
                     }
                 }
             };
@@ -160,18 +159,18 @@ public class ViewTrailsTool extends Tool implements ActionListener {
         buttonsPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawLine(5,0,735,0);
+                g.drawLine(5, 0, 735, 0);
             }
         };
 
-        buttonsPanel.setBounds(0,780,740,90);
+        buttonsPanel.setBounds(0, 780, 740, 90);
         buttonsPanel.setLayout(null);
-        buttonsPanel.setBorder(new LineBorder(Color.BLACK,1));
+        buttonsPanel.setBorder(new LineBorder(Color.BLACK, 1));
 
 
         JButton back = new JButton("Back");
         back.setFont(new Font(null, Font.PLAIN, 18));
-        back.setBounds(20,22,90,45);
+        back.setBounds(20, 22, 90, 45);
         buttonsPanel.add(back);
         back.addActionListener(new ActionListener() {
             @Override
@@ -180,7 +179,7 @@ public class ViewTrailsTool extends Tool implements ActionListener {
                 parent.removeAll();
                 parent.revalidate();
                 parent.repaint();
-                if (typeOfPanelToReturn == "Menu"){
+                if (typeOfPanelToReturn == "Menu") {
                     scheduleApp.createMenu();
                 } else if (typeOfPanelToReturn == "ParkList") {
                     createParkSelection(trailSelection);
@@ -194,7 +193,7 @@ public class ViewTrailsTool extends Tool implements ActionListener {
     public void returnToMenu() {
         JButton menuButton = new JButton("Menu");
         menuButton.setFont(new Font(null, Font.PLAIN, 18));
-        menuButton.setBounds(630,22,90,45);
+        menuButton.setBounds(630, 22, 90, 45);
         buttonsPanel.add(menuButton);
         menuButton.addActionListener(new ActionListener() {
             @Override

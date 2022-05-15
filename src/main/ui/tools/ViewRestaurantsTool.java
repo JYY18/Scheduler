@@ -51,9 +51,9 @@ public class ViewRestaurantsTool extends Tool implements ActionListener {
         buttonList.add(haiDiLaoHotpot);
         buttonList.add(gringo);
 
-        for (JButton b: buttonList) {
-            b.setBackground(new Color(238,238,238));
-            b.setBorder(new LineBorder(Color.BLACK,1));
+        for (JButton b : buttonList) {
+            b.setBackground(new Color(238, 238, 238));
+            b.setBorder(new LineBorder(Color.BLACK, 1));
         }
         restaurantSelection = new JPanel(new GridLayout(5, 0, 0, 0));
 
@@ -69,7 +69,7 @@ public class ViewRestaurantsTool extends Tool implements ActionListener {
     protected void createButton(JComponent parent) {
         button = new JButton("View Restaurants");
         button.setFont(new Font(null, Font.PLAIN, 30));
-        button.setBounds(100,446,540,100);
+        button.setBounds(100, 446, 540, 100);
         button.setBackground(Color.LIGHT_GRAY);
 
         button.setFocusable(false);
@@ -101,19 +101,19 @@ public class ViewRestaurantsTool extends Tool implements ActionListener {
                     createBackPanelAndButton("ParkList");
                     returnToMenu();
                     if (e.getSource() == chambarRestaurant) {
-                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea,"Chambar Restaurant", parent, "chambarRestaurant.jpg", "MapChambar.jpg",daysOfTheWeek);
+                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Chambar Restaurant", parent, "chambarRestaurant.jpg", "MapChambar.jpg", daysOfTheWeek);
 
                     } else if (e.getSource() == hawksworth) {
                         new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Hawksworth", parent, "hawksworth.jpg", "MapHawksworth.jpg", daysOfTheWeek);
 
                     } else if (e.getSource() == miku) {
-                        new AttractionsWindow(scheduleApp.getSchedule(),scheduleArea, "Miku", parent, "miku.jpg", "MapMiku.jpg",daysOfTheWeek);
+                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Miku", parent, "miku.jpg", "MapMiku.jpg", daysOfTheWeek);
 
                     } else if (e.getSource() == haiDiLaoHotpot) {
                         new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "HaiDiLao Hotpot", parent, "haiDiLaoHotpot.jpg", "MapHaiDiLao.jpg", daysOfTheWeek);
 
                     } else if (e.getSource() == gringo) {
-                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Gringo", parent, "gringo.jpg","MapGringo.jpg", daysOfTheWeek);
+                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Gringo", parent, "gringo.jpg", "MapGringo.jpg", daysOfTheWeek);
                     }
                 }
             };
@@ -156,18 +156,18 @@ public class ViewRestaurantsTool extends Tool implements ActionListener {
         buttonsPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawLine(5,0,735,0);
+                g.drawLine(5, 0, 735, 0);
             }
         };
 
-        buttonsPanel.setBounds(0,780,740,90);
+        buttonsPanel.setBounds(0, 780, 740, 90);
         buttonsPanel.setLayout(null);
-        buttonsPanel.setBorder(new LineBorder(Color.BLACK,1));
+        buttonsPanel.setBorder(new LineBorder(Color.BLACK, 1));
 
 
         JButton back = new JButton("Back");
         back.setFont(new Font(null, Font.PLAIN, 18));
-        back.setBounds(20,22,90,45);
+        back.setBounds(20, 22, 90, 45);
         buttonsPanel.add(back);
         back.addActionListener(new ActionListener() {
             @Override
@@ -176,7 +176,7 @@ public class ViewRestaurantsTool extends Tool implements ActionListener {
                 parent.removeAll();
                 parent.revalidate();
                 parent.repaint();
-                if (typeOfPanelToReturn == "Menu"){
+                if (typeOfPanelToReturn == "Menu") {
                     scheduleApp.createMenu();
                 } else if (typeOfPanelToReturn == "ParkList") {
                     createParkSelection(restaurantSelection);
@@ -190,7 +190,7 @@ public class ViewRestaurantsTool extends Tool implements ActionListener {
     public void returnToMenu() {
         JButton menuButton = new JButton("Menu");
         menuButton.setFont(new Font(null, Font.PLAIN, 18));
-        menuButton.setBounds(630,22,90,45);
+        menuButton.setBounds(630, 22, 90, 45);
         buttonsPanel.add(menuButton);
         menuButton.addActionListener(new ActionListener() {
             @Override

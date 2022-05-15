@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 // Represents a reader that reads Day from JSON data stored in file
 // used code from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git as reference
 public class JsonReader {
-    private String source;
+    private final String source;
 
     // EFFECTS: constructs reader to read from source file
     public JsonReader(String source) {

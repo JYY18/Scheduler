@@ -12,11 +12,10 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class AttractionsWindow implements ActionListener {
-    private String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+    private final String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 
-    private Schedule schedule;
-    private JComboBox daysCombo;
-    private int dayNum;
+    private final Schedule schedule;
+    private final JComboBox daysCombo;
 
     private JTextField fromTimeField;
     private JTextField toTimeField;
@@ -24,12 +23,8 @@ public class AttractionsWindow implements ActionListener {
 
     JComponent scheduleArea;
 
-    private JButton addButton;
+    private final JButton addButton;
 
-    private JTextField textField;
-
-
-    private JLabel textLabel = new JLabel();
 
     String attractionName;
 
@@ -63,19 +58,17 @@ public class AttractionsWindow implements ActionListener {
 
     public void initializeGraphics(JComponent parent) {
         JPanel mainLabelsPanel = new JPanel();
-        //mainLabelsPanel.setBackground(Color.WHITE);
         mainLabelsPanel.setLayout(null);
-        mainLabelsPanel.setBounds(0,0, 740, 465);
+        mainLabelsPanel.setBounds(0, 0, 740, 465);
         parent.add(mainLabelsPanel);
 
         addLabels(mainLabelsPanel);
         JPanel actionPanel = new JPanel();
-        //actionPanel.setBackground(Color.GRAY);
         actionPanel.setBounds(20, 480, 390, 280);
         actionPanel.setBorder(new LineBorder(Color.BLACK, 2));
 
         JPanel mapPanel = new JPanel();
-        mapPanel.setBounds(440,480,280,280);
+        mapPanel.setBounds(440, 480, 280, 280);
         JLabel mapLabel = new JLabel(new ImageIcon("image\\" + mapName));
         mapPanel.add(mapLabel);
 
@@ -92,22 +85,19 @@ public class AttractionsWindow implements ActionListener {
         label.setFont(new Font(null, Font.PLAIN, 27));
         titlePanel.add(label);
 
-
         JPanel imagePanel = new JPanel();
-        //test.setBackground(Color.WHITE);
-        imagePanel.setBounds(20,45,700,400);
-
+        imagePanel.setBounds(20, 45, 700, 400);
 
         ImageIcon image = new ImageIcon("image\\" + picFileName);
         JLabel picLabel = new JLabel(image);
-        picLabel.setMaximumSize(new Dimension(700,400));
-        picLabel.setPreferredSize(new Dimension(700,400));
+        picLabel.setMaximumSize(new Dimension(700, 400));
+        picLabel.setPreferredSize(new Dimension(700, 400));
         imagePanel.add(picLabel);
 
         parent.add(imagePanel);
 
         parent.add(titlePanel);
-        parent.setBorder(new LineBorder(Color.BLACK,1));
+        parent.setBorder(new LineBorder(Color.BLACK, 1));
 
     }
 
@@ -125,8 +115,8 @@ public class AttractionsWindow implements ActionListener {
     }
 
     public void createDayComboBox(JComponent actionPanel) {
-        daysCombo.setFont(new Font(null,Font.PLAIN,22));
-        daysCombo.setBounds(90,20,246,32);
+        daysCombo.setFont(new Font(null, Font.PLAIN, 22));
+        daysCombo.setBounds(90, 20, 246, 32);
         actionPanel.add(daysCombo);
 
     }
@@ -136,11 +126,9 @@ public class AttractionsWindow implements ActionListener {
         Font inputTextFont = new Font(null, Font.PLAIN, 18);
 
         JLabel textLabel = new JLabel(label);
-        this.textLabel = textLabel;
 
 
         JTextField textField = new JTextField(22);
-        this.textField = textField;
         Dimension textFieldSize = textField.getPreferredSize();
         textField.setFont(inputTextFont);
 
@@ -149,19 +137,21 @@ public class AttractionsWindow implements ActionListener {
 
         if (label == "From:") {
             textLabel.setBounds(20, 70, fromTimePreferredSize.width, fromTimePreferredSize.height);
-            textField.setBounds(90,70,textFieldSize.width,29);
+            textField.setBounds(90, 70, textFieldSize.width, 29);
 
             this.fromTimeField = textField;
 
-        } if (label == "To:") {
+        }
+        if (label == "To:") {
             textLabel.setBounds(20, 120, fromTimePreferredSize.width, fromTimePreferredSize.height);
-            textField.setBounds(90,120,textFieldSize.width,29);
+            textField.setBounds(90, 120, textFieldSize.width, 29);
 
             this.toTimeField = textField;
 
-        } if (label == "Note:") {
+        }
+        if (label == "Note:") {
             textLabel.setBounds(20, 170, fromTimePreferredSize.width, fromTimePreferredSize.height);
-            textField.setBounds(90,170,textFieldSize.width,29);
+            textField.setBounds(90, 170, textFieldSize.width, 29);
             this.noteField = textField;
         }
 
@@ -170,8 +160,8 @@ public class AttractionsWindow implements ActionListener {
     }
 
     public void createAddButton(JComponent actionPanel) {
-        addButton.setFont(new Font(null,Font.PLAIN, 18));
-        addButton.setBounds(260,220, 70,35);
+        addButton.setFont(new Font(null, Font.PLAIN, 18));
+        addButton.setBounds(260, 220, 70, 35);
         actionPanel.add(addButton);
         addButton.addActionListener(this);
     }
@@ -184,7 +174,6 @@ public class AttractionsWindow implements ActionListener {
             String note = noteField.getText();
 
             int dayNum = daysCombo.getSelectedIndex();
-            this.dayNum = dayNum;
 
 
             ArrayList<Day> localDays = schedule.getDays();
@@ -196,8 +185,8 @@ public class AttractionsWindow implements ActionListener {
             day.addAttractionAndNote(attraction, note);
 
             JPanel subPanel = new JPanel();
-            subPanel.setBounds(0,0,940,700);
-            subPanel.setBackground(new java.awt.Color(197,218,221));
+            subPanel.setBounds(0, 0, 940, 700);
+            subPanel.setBackground(new java.awt.Color(197, 218, 221));
             scheduleArea.add(subPanel);
 
             daysOfTheWeek.setEditable(true);
@@ -207,13 +196,13 @@ public class AttractionsWindow implements ActionListener {
                 daysOfTheWeek.setSelectedItem("Monday");
             } else if (dayNum == 1) {
                 daysOfTheWeek.setSelectedItem("Tuesday");
-            } else if (dayNum ==2) {
+            } else if (dayNum == 2) {
                 daysOfTheWeek.setSelectedItem("Wednesday");
-            } else if( dayNum == 3) {
+            } else if (dayNum == 3) {
                 daysOfTheWeek.setSelectedItem("Thursday");
-            } else if (dayNum ==4) {
+            } else if (dayNum == 4) {
                 daysOfTheWeek.setSelectedItem("Friday");
-            } else if( dayNum ==5) {
+            } else if (dayNum == 5) {
                 daysOfTheWeek.setSelectedItem("Saturday");
             } else if (dayNum == 6) {
                 daysOfTheWeek.setSelectedItem("Sunday");
@@ -225,6 +214,5 @@ public class AttractionsWindow implements ActionListener {
 
             new ScheduleListWindow(schedule, dayNum, subPanel);
         }
-
     }
 }

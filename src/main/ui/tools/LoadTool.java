@@ -13,8 +13,7 @@ import java.io.IOException;
 // loads schedule
 public class LoadTool extends Tool implements ActionListener {
     private static final String JSON_STORE = "./data/schedule.json";
-    private JsonReader jsonReader;
-
+    private final JsonReader jsonReader;
 
 
     // Constructor
@@ -29,7 +28,7 @@ public class LoadTool extends Tool implements ActionListener {
     protected void createButton(JComponent parent) {
         button = new JButton("Load");
         button.setFont(new Font(null, Font.PLAIN, 18));
-        button.setBounds(145,25,100,50);
+        button.setBounds(145, 25, 100, 50);
         button.setBackground(Color.LIGHT_GRAY);
 
         addToParent(parent);

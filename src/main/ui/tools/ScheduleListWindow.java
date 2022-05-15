@@ -11,11 +11,11 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class ScheduleListWindow {
-    private Schedule schedule;
-    private int dayNum;
+    private final Schedule schedule;
+    private final int dayNum;
     JComponent scheduleArea;
 
-    public ScheduleListWindow(Schedule schedule, int dayNum, JComponent scheduleArea){
+    public ScheduleListWindow(Schedule schedule, int dayNum, JComponent scheduleArea) {
         this.schedule = schedule;
         this.dayNum = dayNum;
         this.scheduleArea = scheduleArea;
@@ -25,8 +25,6 @@ public class ScheduleListWindow {
     }
 
     public void initializeGraphics() {
-        //scheduleArea.removeAll();
-
         ArrayList<Day> days = schedule.getDays();
 
         Day day = days.get(dayNum);
@@ -42,8 +40,7 @@ public class ScheduleListWindow {
         });
 
 
-
-        for (Attraction attraction: attractions) {
+        for (Attraction attraction : attractions) {
             addToData(attraction, scheduleArea);
         }
 

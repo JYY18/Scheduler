@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 // Tool to open park selection window
 public class ViewShoppingTool extends Tool implements ActionListener {
-    private String[] parks = {"Stanley Park", "Queen Elizabeth Park", "Nitobe Memorial Garden", "Vanier park", "Capilano Suspension Bridge Park"};
     JComponent parent;
     JComponent scheduleArea; // to be passed to attractionsWindow
 
@@ -52,9 +51,9 @@ public class ViewShoppingTool extends Tool implements ActionListener {
         buttonList.add(tsawwassenMills);
         buttonList.add(pacificCentre);
 
-        for (JButton b: buttonList) {
-            b.setBackground(new Color(238,238,238));
-            b.setBorder(new LineBorder(Color.BLACK,1));
+        for (JButton b : buttonList) {
+            b.setBackground(new Color(238, 238, 238));
+            b.setBorder(new LineBorder(Color.BLACK, 1));
         }
 
         shoppingSelection = new JPanel(new GridLayout(5, 0, 0, 0));
@@ -71,7 +70,7 @@ public class ViewShoppingTool extends Tool implements ActionListener {
     protected void createButton(JComponent parent) {
         button = new JButton("View Shopping");
         button.setFont(new Font(null, Font.PLAIN, 30));
-        button.setBounds(100,578,540,100);
+        button.setBounds(100, 578, 540, 100);
         button.setBackground(Color.LIGHT_GRAY);
 
         button.setFocusable(false);
@@ -103,19 +102,19 @@ public class ViewShoppingTool extends Tool implements ActionListener {
                     createBackPanelAndButton("ParkList");
                     returnToMenu();
                     if (e.getSource() == parkRoyalShoppingCentre) {
-                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea,"Park Royal Shopping Centre", parent, "parkRoyalShoppingCentre.jpg", "MapPark.jpg",daysOfTheWeek);
+                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Park Royal Shopping Centre", parent, "parkRoyalShoppingCentre.jpg", "MapPark.jpg", daysOfTheWeek);
 
                     } else if (e.getSource() == granvilleIsland) {
                         new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Granville Island", parent, "granvilleIsland.jpg", "MapGranville.jpg", daysOfTheWeek);
 
                     } else if (e.getSource() == robsonStreet) {
-                        new AttractionsWindow(scheduleApp.getSchedule(),scheduleArea, "Robson Street", parent, "robsonStreet.jpg", "MapRobson.jpg",daysOfTheWeek);
+                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Robson Street", parent, "robsonStreet.jpg", "MapRobson.jpg", daysOfTheWeek);
 
                     } else if (e.getSource() == tsawwassenMills) {
                         new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Tsawwassen Mills", parent, "tsawwassenMills.jpg", "MapTsawwassen.jpg", daysOfTheWeek);
 
                     } else if (e.getSource() == pacificCentre) {
-                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Pacific Centre", parent, "pacificCentre.jpg","MapPacific.jpg", daysOfTheWeek);
+                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Pacific Centre", parent, "pacificCentre.jpg", "MapPacific.jpg", daysOfTheWeek);
                     }
                 }
             };
@@ -158,19 +157,19 @@ public class ViewShoppingTool extends Tool implements ActionListener {
         buttonsPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawLine(5,0,735,0);
-                buttonsPanel.setBorder(new LineBorder(Color.BLACK,1));
+                g.drawLine(5, 0, 735, 0);
+                buttonsPanel.setBorder(new LineBorder(Color.BLACK, 1));
 
             }
         };
 
-        buttonsPanel.setBounds(0,780,740,90);
+        buttonsPanel.setBounds(0, 780, 740, 90);
         buttonsPanel.setLayout(null);
 
 
         JButton back = new JButton("Back");
         back.setFont(new Font(null, Font.PLAIN, 18));
-        back.setBounds(20,22,90,45);
+        back.setBounds(20, 22, 90, 45);
         buttonsPanel.add(back);
         back.addActionListener(new ActionListener() {
             @Override
@@ -179,7 +178,7 @@ public class ViewShoppingTool extends Tool implements ActionListener {
                 parent.removeAll();
                 parent.revalidate();
                 parent.repaint();
-                if (typeOfPanelToReturn == "Menu"){
+                if (typeOfPanelToReturn == "Menu") {
                     scheduleApp.createMenu();
                 } else if (typeOfPanelToReturn == "ParkList") {
                     createParkSelection(shoppingSelection);
@@ -193,7 +192,7 @@ public class ViewShoppingTool extends Tool implements ActionListener {
     public void returnToMenu() {
         JButton menuButton = new JButton("Menu");
         menuButton.setFont(new Font(null, Font.PLAIN, 18));
-        menuButton.setBounds(630,22,90,45);
+        menuButton.setBounds(630, 22, 90, 45);
         buttonsPanel.add(menuButton);
         menuButton.addActionListener(new ActionListener() {
             @Override

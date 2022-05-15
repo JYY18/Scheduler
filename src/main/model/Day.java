@@ -21,7 +21,6 @@ public class Day implements Writable {
 
     // MODIFIES: this
     // EFFECTS: adds an attraction and a note
-    //          note that each attraction is unique
     public void addAttractionAndNote(Attraction attraction, String note) {
         addedAttractions.add(attraction);
         attraction.addNote(note);
@@ -75,7 +74,5 @@ public class Day implements Writable {
         }
 
         return jsonArray;
-
     }
-
 }

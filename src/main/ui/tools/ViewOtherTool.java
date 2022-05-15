@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 // Tool to open park selection window
 public class ViewOtherTool extends Tool implements ActionListener {
-    private String[] parks = {"Stanley Park", "Queen Elizabeth Park", "Nitobe Memorial Garden", "Vanier park", "Capilano Suspension Bridge Park"};
+    private final String[] parks = {"Stanley Park", "Queen Elizabeth Park", "Nitobe Memorial Garden", "Vanier park", "Capilano Suspension Bridge Park"};
     JComponent parent;
     JComponent scheduleArea; // to be passed to attractionsWindow
 
@@ -52,9 +52,9 @@ public class ViewOtherTool extends Tool implements ActionListener {
         buttonList.add(rogerArena);
         buttonList.add(vancouverArtGallery);
 
-        for (JButton b: buttonList) {
-            b.setBackground(new Color(238,238,238));
-            b.setBorder(new LineBorder(Color.BLACK,1));
+        for (JButton b : buttonList) {
+            b.setBackground(new Color(238, 238, 238));
+            b.setBorder(new LineBorder(Color.BLACK, 1));
         }
 
         parkSelection = new JPanel(new GridLayout(5, 0, 0, 0));
@@ -71,7 +71,7 @@ public class ViewOtherTool extends Tool implements ActionListener {
     protected void createButton(JComponent parent) {
         button = new JButton("View Other");
         button.setFont(new Font(null, Font.PLAIN, 30));
-        button.setBounds(100,710,540,100);
+        button.setBounds(100, 710, 540, 100);
         button.setBackground(Color.LIGHT_GRAY);
 
         button.setFocusable(false);
@@ -89,7 +89,6 @@ public class ViewOtherTool extends Tool implements ActionListener {
             parent.revalidate();
             parent.repaint();
 
-
             parkSelection.setBounds(0, 0, 740, 780);
 
             createParkSelection(parkSelection);
@@ -103,19 +102,19 @@ public class ViewOtherTool extends Tool implements ActionListener {
                     createBackPanelAndButton("ParkList");
                     returnToMenu();
                     if (e.getSource() == gastownSteamClock) {
-                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea,"Gastown Steam Clock", parent, "gastownSteamClock.jpg", "MapGas.jpg",daysOfTheWeek);
+                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Gastown Steam Clock", parent, "gastownSteamClock.jpg", "MapGas.jpg", daysOfTheWeek);
 
                     } else if (e.getSource() == flyoverCanada) {
                         new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Flyover Canada", parent, "flyoverCanada.jpg", "MapFly.jpg", daysOfTheWeek);
 
                     } else if (e.getSource() == vancouverAquarium) {
-                        new AttractionsWindow(scheduleApp.getSchedule(),scheduleArea, "Vancouver Aquarium", parent, "vancouverAquarium.jpg", "MapAquarium.jpg",daysOfTheWeek);
+                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Vancouver Aquarium", parent, "vancouverAquarium.jpg", "MapAquarium.jpg", daysOfTheWeek);
 
                     } else if (e.getSource() == rogerArena) {
                         new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Roger Arena", parent, "rogerArena.jpg", "MapRoger.jpg", daysOfTheWeek);
 
                     } else if (e.getSource() == vancouverArtGallery) {
-                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Vancouver Art Gallery", parent, "vancouverArtGallery.jpg","MapArt.jpg", daysOfTheWeek);
+                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Vancouver Art Gallery", parent, "vancouverArtGallery.jpg", "MapArt.jpg", daysOfTheWeek);
                     }
                 }
             };
@@ -158,18 +157,18 @@ public class ViewOtherTool extends Tool implements ActionListener {
         buttonsPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawLine(5,0,735,0);
+                g.drawLine(5, 0, 735, 0);
             }
         };
 
-        buttonsPanel.setBounds(0,780,740,90);
+        buttonsPanel.setBounds(0, 780, 740, 90);
         buttonsPanel.setLayout(null);
-        buttonsPanel.setBorder(new LineBorder(Color.BLACK,1));
+        buttonsPanel.setBorder(new LineBorder(Color.BLACK, 1));
 
 
         JButton back = new JButton("Back");
         back.setFont(new Font(null, Font.PLAIN, 18));
-        back.setBounds(20,22,90,45);
+        back.setBounds(20, 22, 90, 45);
         buttonsPanel.add(back);
         back.addActionListener(new ActionListener() {
             @Override
@@ -178,7 +177,7 @@ public class ViewOtherTool extends Tool implements ActionListener {
                 parent.removeAll();
                 parent.revalidate();
                 parent.repaint();
-                if (typeOfPanelToReturn == "Menu"){
+                if (typeOfPanelToReturn == "Menu") {
                     scheduleApp.createMenu();
                 } else if (typeOfPanelToReturn == "ParkList") {
                     createParkSelection(parkSelection);
@@ -192,7 +191,7 @@ public class ViewOtherTool extends Tool implements ActionListener {
     public void returnToMenu() {
         JButton menuButton = new JButton("Menu");
         menuButton.setFont(new Font(null, Font.PLAIN, 18));
-        menuButton.setBounds(630,22,90,45);
+        menuButton.setBounds(630, 22, 90, 45);
         buttonsPanel.add(menuButton);
         menuButton.addActionListener(new ActionListener() {
             @Override

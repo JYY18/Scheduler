@@ -51,9 +51,9 @@ public class ViewParksTool extends Tool implements ActionListener {
         buttonList.add(vanierPark);
         buttonList.add(capilanoSuspensionBridgePark);
 
-        for (JButton b: buttonList) {
-            b.setBackground(new Color(238,238,238));
-            b.setBorder(new LineBorder(Color.BLACK,1));
+        for (JButton b : buttonList) {
+            b.setBackground(new Color(238, 238, 238));
+            b.setBorder(new LineBorder(Color.BLACK, 1));
         }
 
         parkSelection = new JPanel(new GridLayout(5, 0, 0, 0));
@@ -71,7 +71,7 @@ public class ViewParksTool extends Tool implements ActionListener {
     protected void createButton(JComponent parent) {
         button = new JButton("View Parks");
         button.setFont(new Font(null, Font.PLAIN, 30));
-        button.setBounds(100,50,540,100);
+        button.setBounds(100, 50, 540, 100);
         button.setBackground(Color.LIGHT_GRAY);
 
         button.setFocusable(false);
@@ -103,19 +103,19 @@ public class ViewParksTool extends Tool implements ActionListener {
                     createBackPanelAndButton("ParkList");
                     returnToMenu();
                     if (e.getSource() == stanleyPark) {
-                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea,"Stanley Park", parent, "stanleyPark.jpg", "MapStanley.jpg",daysOfTheWeek);
+                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Stanley Park", parent, "stanleyPark.jpg", "MapStanley.jpg", daysOfTheWeek);
 
                     } else if (e.getSource() == queenElizabethPark) {
                         new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Queen Elizabeth Park", parent, "queenElizabethPark.jpg", "MapQueenElizabeth.jpg", daysOfTheWeek);
 
                     } else if (e.getSource() == nitobeMemorialGarden) {
-                        new AttractionsWindow(scheduleApp.getSchedule(),scheduleArea, "Nitobe Memorial Garden", parent, "nitobeMemorialGarden.jpg", "MapNitobe.jpg",daysOfTheWeek);
+                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Nitobe Memorial Garden", parent, "nitobeMemorialGarden.jpg", "MapNitobe.jpg", daysOfTheWeek);
 
                     } else if (e.getSource() == vanierPark) {
                         new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Vanier Park", parent, "vanierPark.jpg", "MapVanier.jpg", daysOfTheWeek);
 
                     } else if (e.getSource() == capilanoSuspensionBridgePark) {
-                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Capilano Suspension Bridge Park", parent, "capilanoSuspensionBridgePark.jpg","MapCapilano.jpg", daysOfTheWeek);
+                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Capilano Suspension Bridge Park", parent, "capilanoSuspensionBridgePark.jpg", "MapCapilano.jpg", daysOfTheWeek);
                     }
                 }
             };
@@ -155,44 +155,44 @@ public class ViewParksTool extends Tool implements ActionListener {
     }
 
     public void createBackPanelAndButton(String typeOfPanelToReturn) {
-            buttonsPanel = new JPanel() {
-                protected void paintComponent(Graphics g) {
-                    super.paintComponent(g);
-                    g.drawLine(5,0,735,0);
+        buttonsPanel = new JPanel() {
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawLine(5, 0, 735, 0);
+            }
+        };
+
+        buttonsPanel.setBounds(0, 780, 740, 90);
+        buttonsPanel.setLayout(null);
+        buttonsPanel.setBorder(new LineBorder(Color.BLACK, 1));
+
+
+        JButton back = new JButton("Back");
+        back.setFont(new Font(null, Font.PLAIN, 18));
+        back.setBounds(20, 22, 90, 45);
+        buttonsPanel.add(back);
+        back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                parent.removeAll();
+                parent.revalidate();
+                parent.repaint();
+                if (typeOfPanelToReturn == "Menu") {
+                    scheduleApp.createMenu();
+                } else if (typeOfPanelToReturn == "ParkList") {
+                    createParkSelection(parkSelection);
                 }
-            };
+            }
+        });
 
-            buttonsPanel.setBounds(0,780,740,90);
-            buttonsPanel.setLayout(null);
-        buttonsPanel.setBorder(new LineBorder(Color.BLACK,1));
-
-
-            JButton back = new JButton("Back");
-            back.setFont(new Font(null, Font.PLAIN, 18));
-            back.setBounds(20,22,90,45);
-            buttonsPanel.add(back);
-            back.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-
-                    parent.removeAll();
-                    parent.revalidate();
-                    parent.repaint();
-                    if (typeOfPanelToReturn == "Menu"){
-                        scheduleApp.createMenu();
-                    } else if (typeOfPanelToReturn == "ParkList") {
-                        createParkSelection(parkSelection);
-                    }
-                }
-            });
-
-            parent.add(buttonsPanel);
+        parent.add(buttonsPanel);
     }
 
     public void returnToMenu() {
         JButton menuButton = new JButton("Menu");
         menuButton.setFont(new Font(null, Font.PLAIN, 18));
-        menuButton.setBounds(630,22,90,45);
+        menuButton.setBounds(630, 22, 90, 45);
         buttonsPanel.add(menuButton);
         menuButton.addActionListener(new ActionListener() {
             @Override

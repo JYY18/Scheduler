@@ -27,23 +27,6 @@ public class ScheduleTest {
         day2 = new Day(2);
         day3 = new Day(3);
 
-//        attractionTypes = new AttractionTypes();
-//        attractionTypes.addPark("ParkA");
-//        attractionTypes.addPark("ParkB");
-//        attractionTypes.addPark("ParkC");
-//
-//        attractionTypes.addTrail("TrailA");
-//        attractionTypes.addTrail("TrailB");
-//        attractionTypes.addTrail("TrailC");
-//
-//        attractionTypes.addRestaurant("RestaurantA");
-//        attractionTypes.addRestaurant("RestaurantB");
-//        attractionTypes.addRestaurant("RestaurantC");
-//
-//        attractionTypes.addBeaches("BeachA");
-//        attractionTypes.addBeaches("BeachB");
-//        attractionTypes.addBeaches("BeachC");
-
         attractionPark = new Attraction(1, "ParkA", "07:00", "09:00");
         attractionTrail = new Attraction(1, "TrailA", "09:00", "12:00");
         attractionRestaurant = new Attraction(1, "RestaurantA", "13:00", "14:00");
@@ -58,7 +41,9 @@ public class ScheduleTest {
         day2.addAttractionAndNote(attractionTrail, "Bring water");
 
         testSchedule.addDayToSchedule(day1);
+        testSchedule.setDayNum(day1);
         testSchedule.addDayToSchedule(day2);
+        testSchedule.setDayNum(day2);
     }
 
     @Test
@@ -96,24 +81,15 @@ public class ScheduleTest {
     }
 
     @Test
-    public void testGetLastDayNumInList() {
-        assertEquals(2, testSchedule.getLastDayNumInList());
-        testSchedule.createNewDay();
-        assertEquals(3, testSchedule.getLastDayNumInList());
-    }
-
-    @Test
     void testViewSchedule() {
         ArrayList<String> schedule1 = new ArrayList<>();
         schedule1.add("01:00 - 02:00: Attraction By me \nnote: Emily's note");
         schedule1.add("07:00 - 09:00: Park: ParkA \nnote: Bring umbrella");
         schedule1.add("13:00 - 14:00: Restaurant: RestaurantA \nnote: Bring money");
         schedule1.add("14:00 - 16:00: Beach: BeachA \nnote: Bring food");
-        //assertEquals(schedule1, testSchedule.viewSchedule(0, attractionTypes));
 
         ArrayList<String> schedule2 = new ArrayList<>();
         schedule2.add("09:00 - 12:00: Trail: TrailA \nnote: Bring water");
-        //assertEquals(schedule2, testSchedule.viewSchedule(1, attractionTypes));
     }
 
     @Test

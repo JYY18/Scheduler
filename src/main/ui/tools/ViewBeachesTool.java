@@ -50,15 +50,14 @@ public class ViewBeachesTool extends Tool implements ActionListener {
         buttonList.add(jerichoBeach);
         buttonList.add(spanishBanksBeach);
 
-        for (JButton b: buttonList) {
-            b.setBackground(new Color(238,238,238));
-            b.setBorder(new LineBorder(Color.BLACK,1));
+        for (JButton b : buttonList) {
+            b.setBackground(new Color(238, 238, 238));
+            b.setBorder(new LineBorder(Color.BLACK, 1));
         }
 
         beachSelection = new JPanel(new GridLayout(5, 0, 0, 0));
 
         this.daysOfTheWeek = daysOfTheWeek;
-
     }
 
 
@@ -68,7 +67,7 @@ public class ViewBeachesTool extends Tool implements ActionListener {
     protected void createButton(JComponent parent) {
         button = new JButton("View Beaches");
         button.setFont(new Font(null, Font.PLAIN, 30));
-        button.setBounds(100,182,540,100);
+        button.setBounds(100, 182, 540, 100);
         button.setBackground(Color.LIGHT_GRAY);
 
         button.setFocusable(false);
@@ -100,19 +99,19 @@ public class ViewBeachesTool extends Tool implements ActionListener {
                     createBackPanelAndButton("ParkList");
                     returnToMenu();
                     if (e.getSource() == englishBayBeach) {
-                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea,"English Bay Beach", parent, "englishBayBeach.jpg", "MapEnglish.jpg",daysOfTheWeek);
+                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "English Bay Beach", parent, "englishBayBeach.jpg", "MapEnglish.jpg", daysOfTheWeek);
 
                     } else if (e.getSource() == kitsilanoBeach) {
                         new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Kitsilano Beach", parent, "kitsilanoBeach.jpg", "MapKitsilano.jpg", daysOfTheWeek);
 
                     } else if (e.getSource() == wreckBeach) {
-                        new AttractionsWindow(scheduleApp.getSchedule(),scheduleArea, "Wreck Beach", parent, "wreckBeach.jpg", "MapWreck.jpg",daysOfTheWeek);
+                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Wreck Beach", parent, "wreckBeach.jpg", "MapWreck.jpg", daysOfTheWeek);
 
                     } else if (e.getSource() == jerichoBeach) {
                         new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Jericho Beach", parent, "jerichoBeach.jpg", "MapJericho.jpg", daysOfTheWeek);
 
                     } else if (e.getSource() == spanishBanksBeach) {
-                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Spanish Banks Beach", parent, "spanishBanksBeach.jpg","MapSpanish.jpg", daysOfTheWeek);
+                        new AttractionsWindow(scheduleApp.getSchedule(), scheduleArea, "Spanish Banks Beach", parent, "spanishBanksBeach.jpg", "MapSpanish.jpg", daysOfTheWeek);
                     }
                 }
             };
@@ -155,18 +154,18 @@ public class ViewBeachesTool extends Tool implements ActionListener {
         buttonsPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawLine(5,0,735,0);
+                g.drawLine(5, 0, 735, 0);
             }
         };
 
-        buttonsPanel.setBounds(0,780,740,90);
+        buttonsPanel.setBounds(0, 780, 740, 90);
         buttonsPanel.setLayout(null);
-        buttonsPanel.setBorder(new LineBorder(Color.BLACK,1));
+        buttonsPanel.setBorder(new LineBorder(Color.BLACK, 1));
 
 
         JButton back = new JButton("Back");
         back.setFont(new Font(null, Font.PLAIN, 18));
-        back.setBounds(20,22,90,45);
+        back.setBounds(20, 22, 90, 45);
         buttonsPanel.add(back);
         back.addActionListener(new ActionListener() {
             @Override
@@ -175,7 +174,7 @@ public class ViewBeachesTool extends Tool implements ActionListener {
                 parent.removeAll();
                 parent.revalidate();
                 parent.repaint();
-                if (typeOfPanelToReturn == "Menu"){
+                if (typeOfPanelToReturn == "Menu") {
                     scheduleApp.createMenu();
                 } else if (typeOfPanelToReturn == "ParkList") {
                     createParkSelection(beachSelection);
@@ -189,7 +188,7 @@ public class ViewBeachesTool extends Tool implements ActionListener {
     public void returnToMenu() {
         JButton menuButton = new JButton("Menu");
         menuButton.setFont(new Font(null, Font.PLAIN, 18));
-        menuButton.setBounds(630,22,90,45);
+        menuButton.setBounds(630, 22, 90, 45);
         buttonsPanel.add(menuButton);
         menuButton.addActionListener(new ActionListener() {
             @Override
@@ -201,5 +200,4 @@ public class ViewBeachesTool extends Tool implements ActionListener {
             }
         });
     }
-
 }

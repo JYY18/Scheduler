@@ -21,7 +21,7 @@ public class SaveTool extends Tool implements ActionListener {
     protected void createButton(JComponent parent) {
         button = new JButton("Save");
         button.setFont(new Font(null, Font.PLAIN, 18));
-        button.setBounds(25,25,100,50);
+        button.setBounds(25, 25, 100, 50);
         button.setBackground(Color.LIGHT_GRAY);
 
         addToParent(parent);

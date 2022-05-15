@@ -12,12 +12,12 @@ import java.util.ArrayList;
 
 public class DeleteEventWindow extends JFrame implements ActionListener {
 
-    private String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
-    private Schedule schedule;
-    private JComboBox daysComboBox = new JComboBox(days);
-    private JComboBox fromComboBox = new JComboBox();
-    private JComboBox toComboBox = new JComboBox();
-    private JLabel nameLabel = new JLabel();
+    private final String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+    private final Schedule schedule;
+    private final JComboBox daysComboBox = new JComboBox(days);
+    private final JComboBox fromComboBox = new JComboBox();
+    private final JComboBox toComboBox = new JComboBox();
+    private final JLabel nameLabel = new JLabel();
 
     private Day day;
 
@@ -37,8 +37,6 @@ public class DeleteEventWindow extends JFrame implements ActionListener {
     // MODIFIES: this
     // EFFECTS: initializes window graphics
     private void initializeGraphics() {
-        // add(Box.createVerticalStrut(400));
-
         JPanel deletePanel = new JPanel();
         deletePanel.add(Box.createVerticalStrut(100));
         deletePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -61,7 +59,6 @@ public class DeleteEventWindow extends JFrame implements ActionListener {
 
         pack();
 
-        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
     }
@@ -74,9 +71,8 @@ public class DeleteEventWindow extends JFrame implements ActionListener {
                     public void actionPerformed(ActionEvent e) {
                         int dayIndex = daysComboBox.getSelectedIndex();
                         ArrayList<Day> listOfDay = schedule.getDays();
-//
-                        day = listOfDay.get(dayIndex);
 
+                        day = listOfDay.get(dayIndex);
 
                         ArrayList<String> names = new ArrayList<>();
                         ArrayList<String> ftimes = new ArrayList();
@@ -108,7 +104,7 @@ public class DeleteEventWindow extends JFrame implements ActionListener {
             System.out.println(deleteIndex);
             System.out.println(t);
 
-            if (deleteIndex == t ) {
+            if (deleteIndex == t) {
                 Attraction a = day.getAttractionsAdded().get(deleteIndex);
 
 

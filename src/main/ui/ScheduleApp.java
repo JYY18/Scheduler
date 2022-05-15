@@ -37,17 +37,17 @@ public class ScheduleApp extends JFrame {
 
     JComboBox daysOfTheWeek;
 
-    private String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+    private final String[] days = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 
     private ArrayList<String> columnNames;
 
     private static final String JSON_STORE = "./data/schedule.json";
 
-    Color scheduleAreaColour = new java.awt.Color(197,218,221);
+    Color scheduleAreaColour = new java.awt.Color(197, 218, 221);
 
 
-    private JsonWriter jsonWriter;
-    private JsonReader jsonReader;
+    private final JsonWriter jsonWriter;
+    private final JsonReader jsonReader;
 
     public ScheduleApp() {
         super("Schedule");
@@ -98,7 +98,6 @@ public class ScheduleApp extends JFrame {
     // MODIFIES: this
     // EFFECTS: creates JFrame layout and buttons
     public void initializeGraphics() {
-        //setLayout(new BorderLayout());
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
         getContentPane().setBackground(Color.LIGHT_GRAY);
         getContentPane().setLayout(null);
@@ -126,7 +125,7 @@ public class ScheduleApp extends JFrame {
     // EFFECTS: creates and adds buttons
     public void createMenu() {
 
-        menuArea.setBounds(40,40,740,870);
+        menuArea.setBounds(40, 40, 740, 870);
         menuArea.setLayout(null);
         menuArea.setBorder(new LineBorder(Color.BLACK, 1));
 
@@ -140,7 +139,6 @@ public class ScheduleApp extends JFrame {
         new ViewOtherTool(this, menuArea, scheduleArea, daysOfTheWeek);
 
 
-
     }
 
     // MODIFIES: this
@@ -149,14 +147,14 @@ public class ScheduleApp extends JFrame {
 
         JPanel schedulePanel = new JPanel();
 
-        schedulePanel.setBounds(850,40,990,870);
+        schedulePanel.setBounds(850, 40, 990, 870);
         schedulePanel.setLayout(null);
 
         schedulePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
         //save/load
 
-        new SaveTool(this,schedulePanel);
+        new SaveTool(this, schedulePanel);
         new LoadTool(this, schedulePanel);
 
         // delete windows tool
@@ -164,11 +162,9 @@ public class ScheduleApp extends JFrame {
         new DeleteEventTool(this, schedulePanel);
 
 
-
-
         JPanel columnNamesPanel = new JPanel();
-        columnNamesPanel.setBackground(new java.awt.Color(201,228,223));
-        columnNamesPanel.setBounds(25,95,940,40);
+        columnNamesPanel.setBackground(new java.awt.Color(201, 228, 223));
+        columnNamesPanel.setBounds(25, 95, 940, 40);
 
         columnNames.add("Attraction Name");
         columnNames.add("From");
@@ -179,16 +175,15 @@ public class ScheduleApp extends JFrame {
 
         schedulePanel.add(columnNamesPanel);
 
-        scheduleArea.setBounds(25,145,940,700);
-        scheduleArea.setBackground(new java.awt.Color(197,218,221));
+        scheduleArea.setBounds(25, 145, 940, 700);
+        scheduleArea.setBackground(new java.awt.Color(197, 218, 221));
         scheduleArea.setLayout(null);
 
         //dropdown list
 
-        daysOfTheWeek.setBounds(750,25,200,45);
+        daysOfTheWeek.setBounds(750, 25, 200, 45);
         daysOfTheWeek.setFont(new Font(null, Font.PLAIN, 18));
         schedulePanel.add(daysOfTheWeek);
-
 
 
         daysOfTheWeek.addActionListener(new ActionListener() {
@@ -201,43 +196,41 @@ public class ScheduleApp extends JFrame {
                 scheduleArea.repaint();
 
                 daysPanel.removeAll();
-                daysPanel.setBounds(0,0,940,700);
+                daysPanel.setBounds(0, 0, 940, 700);
                 daysPanel.setBackground(scheduleAreaColour);
 
                 switch (selectedDay) {
                     case "Monday":
                         scheduleArea.add(daysPanel);
-                        new ScheduleListWindow(schedule,0, daysPanel);
+                        new ScheduleListWindow(schedule, 0, daysPanel);
                         break;
                     case "Tuesday":
                         scheduleArea.add(daysPanel);
-                        new ScheduleListWindow(schedule,1, daysPanel);
+                        new ScheduleListWindow(schedule, 1, daysPanel);
                         break;
                     case "Wednesday":
                         scheduleArea.add(daysPanel);
-                        new ScheduleListWindow(schedule,2,daysPanel);
+                        new ScheduleListWindow(schedule, 2, daysPanel);
                         break;
                     case "Thursday":
                         scheduleArea.add(daysPanel);
-                        new ScheduleListWindow(schedule,3,daysPanel);
+                        new ScheduleListWindow(schedule, 3, daysPanel);
                         break;
                     case "Friday":
                         scheduleArea.add(daysPanel);
-                        new ScheduleListWindow(schedule,4,daysPanel);
+                        new ScheduleListWindow(schedule, 4, daysPanel);
                         break;
                     case "Saturday":
                         scheduleArea.add(daysPanel);
-                        new ScheduleListWindow(schedule,5,daysPanel);
+                        new ScheduleListWindow(schedule, 5, daysPanel);
                         break;
                     case "Sunday":
                         scheduleArea.add(daysPanel);
-                        new ScheduleListWindow(schedule,6,daysPanel);
+                        new ScheduleListWindow(schedule, 6, daysPanel);
                         break;
                 }
             }
         });
-
-
 
 
         schedulePanel.add(scheduleArea);
@@ -246,7 +239,7 @@ public class ScheduleApp extends JFrame {
 
     public void addContentLine(JComponent columnPanel, ArrayList<String> line) {
         columnPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        for (String s: line) {
+        for (String s : line) {
             JLabel label = new JLabel(s);
             label.setPreferredSize(new Dimension(230, 25)); // distance from prev column
             label.setFont(new Font(null, Font.PLAIN, 20));
