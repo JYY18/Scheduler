@@ -68,7 +68,7 @@ public class ViewBeachesTool extends Tool implements ActionListener {
     protected void createButton(JComponent parent) {
         button = new JButton("View Beaches");
         button.setFont(new Font(null, Font.PLAIN, 30));
-        button.setBounds(150,182,540,100);
+        button.setBounds(100,182,540,100);
         button.setBackground(Color.LIGHT_GRAY);
 
         button.setFocusable(false);

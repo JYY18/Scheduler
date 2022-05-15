@@ -61,6 +61,7 @@ public class ViewParksTool extends Tool implements ActionListener {
         buttonsPanel = new JPanel();
         this.daysOfTheWeek = daysOfTheWeek;
 
+
     }
 
 
@@ -70,14 +71,14 @@ public class ViewParksTool extends Tool implements ActionListener {
     protected void createButton(JComponent parent) {
         button = new JButton("View Parks");
         button.setFont(new Font(null, Font.PLAIN, 30));
-        button.setBounds(150,50,540,100);
+        button.setBounds(100,50,540,100);
         button.setBackground(Color.LIGHT_GRAY);
 
         button.setFocusable(false);
         button.addActionListener(this);
         addToParent(parent);
-
     }
+
 
     // EFFECTS: when view parks is clicked
     @Override

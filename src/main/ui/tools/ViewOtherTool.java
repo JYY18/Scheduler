@@ -71,7 +71,7 @@ public class ViewOtherTool extends Tool implements ActionListener {
     protected void createButton(JComponent parent) {
         button = new JButton("View Other");
         button.setFont(new Font(null, Font.PLAIN, 30));
-        button.setBounds(150,710,540,100);
+        button.setBounds(100,710,540,100);
         button.setBackground(Color.LIGHT_GRAY);
 
         button.setFocusable(false);

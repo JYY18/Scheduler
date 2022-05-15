@@ -72,7 +72,7 @@ public class ViewTrailsTool extends Tool implements ActionListener {
     protected void createButton(JComponent parent) {
         button = new JButton("View Trails");
         button.setFont(new Font(null, Font.PLAIN, 30));
-        button.setBounds(150,314,540,100);
+        button.setBounds(100,314,540,100);
         button.setBackground(Color.LIGHT_GRAY);
 
         button.setFocusable(false);
