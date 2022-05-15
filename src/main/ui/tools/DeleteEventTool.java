@@ -22,7 +22,7 @@ public class DeleteEventTool extends Tool implements ActionListener {
     protected void createButton(JComponent parent) {
         button = new JButton("Delete event");
         button.setFont(new Font(null, Font.PLAIN, 18));
-        button.setBounds(265,30,150,50);
+        button.setBounds(265,25,150,50);
         button.setBackground(Color.LIGHT_GRAY);
 
         addToParent(parent);

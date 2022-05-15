@@ -185,7 +185,7 @@ public class ScheduleApp extends JFrame {
 
         //dropdown list
 
-        daysOfTheWeek.setBounds(750,30,200,45);
+        daysOfTheWeek.setBounds(750,25,200,45);
         daysOfTheWeek.setFont(new Font(null, Font.PLAIN, 18));
         schedulePanel.add(daysOfTheWeek);
 

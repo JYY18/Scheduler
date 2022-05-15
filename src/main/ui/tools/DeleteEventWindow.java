@@ -108,9 +108,9 @@ public class DeleteEventWindow extends JFrame implements ActionListener {
             System.out.println(deleteIndex);
             System.out.println(t);
 
-
             if (deleteIndex == t ) {
                 Attraction a = day.getAttractionsAdded().get(deleteIndex);
+
 
                 // comboBox remove
                 toComboBox.removeItem(a.getAttractionToTime());
