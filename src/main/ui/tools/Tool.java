@@ -18,14 +18,6 @@ public abstract class Tool {
         addToParent(parent);
     }
 
-    // Constructor
-    public Tool(ScheduleApp scheduleApp, JComponent parent, int dayn) {
-        this.scheduleApp = scheduleApp;
-        this.dayn = dayn;
-        createButton(parent);
-        addToParent(parent);
-    }
-
     // EFFECTS: creates new button
     protected abstract void createButton(JComponent parent);
 

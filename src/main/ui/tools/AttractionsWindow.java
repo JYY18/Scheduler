@@ -40,6 +40,7 @@ public class AttractionsWindow implements ActionListener {
         this.schedule = schedule;
         daysCombo = new JComboBox(days);
         addButton = new JButton("Add");
+        addButton.setBackground(Color.lightGray);
 
         this.scheduleArea = scheduleArea;
 

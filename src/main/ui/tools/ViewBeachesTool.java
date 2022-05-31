@@ -166,6 +166,7 @@ public class ViewBeachesTool extends Tool implements ActionListener {
         JButton back = new JButton("Back");
         back.setFont(new Font(null, Font.PLAIN, 18));
         back.setBounds(20, 22, 90, 45);
+        back.setBackground(Color.lightGray);
         buttonsPanel.add(back);
         back.addActionListener(new ActionListener() {
             @Override
@@ -189,6 +190,7 @@ public class ViewBeachesTool extends Tool implements ActionListener {
         JButton menuButton = new JButton("Menu");
         menuButton.setFont(new Font(null, Font.PLAIN, 18));
         menuButton.setBounds(630, 22, 90, 45);
+        menuButton.setBackground(Color.lightGray);
         buttonsPanel.add(menuButton);
         menuButton.addActionListener(new ActionListener() {
             @Override
